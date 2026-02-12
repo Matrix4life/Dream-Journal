@@ -354,6 +354,33 @@
       display:flex; 
       flex-direction:column; 
       gap:12px;
+      max-height:600px;
+      overflow-y:auto;
+      overflow-x:hidden;
+      padding-right:8px;
+      position:relative;
+    }
+    
+    .entries-list::after{
+      content:'';
+      position:sticky;
+      bottom:0;
+      left:0;
+      right:0;
+      height:40px;
+      background:linear-gradient(to top, var(--card), transparent);
+      pointer-events:none;
+      opacity:0;
+      transition:opacity 0.3s ease;
+    }
+    
+    .entries-list::-webkit-scrollbar{
+      width:8px;
+    }
+    
+    .entries-list::-webkit-scrollbar-thumb{
+      background:var(--accent);
+      border-radius:4px;
     }
     
     .entry{
@@ -1062,11 +1089,15 @@
         </div>
 
         <div style="margin-top:16px">
-          <label>Tags / Symbols</label>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
+            <label style="margin:0">Tags / Symbols</label>
+            <button id="autoDetectBtn" class="btn" style="padding:6px 12px; font-size:12px">✨ Auto-Detect</button>
+          </div>
           <div class="tag-input-container" id="tagContainer">
             <input type="text" class="tag-input" id="tagInput" placeholder="Type and press Enter…" />
           </div>
           <div class="tag-suggestions" id="tagSuggestions"></div>
+          <p class="muted small" style="margin-top:6px">💡 Auto-detects symbols from your dream text</p>
         </div>
 
         <div style="margin-top:16px">
@@ -1484,26 +1515,26 @@ const state = {
 
 // Common dream symbols
 const SYMBOLS = [
-  { icon:'💧', name:'Water', meaning:'Emotions, unconscious mind, flow of life' },
-  { icon:'🕊️', name:'Flying', meaning:'Freedom, escape, ambition, perspective' },
-  { icon:'🏃', name:'Running', meaning:'Avoiding something, urgency, goals' },
-  { icon:'🏠', name:'House', meaning:'Self, different aspects of personality' },
-  { icon:'🚪', name:'Door', meaning:'Opportunity, transition, new phase' },
-  { icon:'🐍', name:'Snake', meaning:'Transformation, hidden fears, healing' },
-  { icon:'🌊', name:'Ocean', meaning:'Vast emotions, unconscious, mystery' },
-  { icon:'🔥', name:'Fire', meaning:'Passion, destruction, transformation' },
-  { icon:'👶', name:'Baby', meaning:'New beginnings, vulnerability, potential' },
-  { icon:'💀', name:'Death', meaning:'Endings, transformation, change' },
-  { icon:'🦅', name:'Birds', meaning:'Freedom, spirituality, messages' },
-  { icon:'🕷️', name:'Spiders', meaning:'Creativity, patience, feeling trapped' },
-  { icon:'🚗', name:'Vehicle', meaning:'Life journey, control, direction' },
-  { icon:'📚', name:'School', meaning:'Learning, anxiety, unpreparedness' },
-  { icon:'👥', name:'People', meaning:'Aspects of self, relationships' },
-  { icon:'🌙', name:'Moon', meaning:'Feminine energy, cycles, intuition' },
-  { icon:'☀️', name:'Sun', meaning:'Consciousness, energy, optimism' },
-  { icon:'🌳', name:'Trees', meaning:'Growth, stability, life force' },
-  { icon:'⚡', name:'Lightning', meaning:'Sudden change, revelation, power' },
-  { icon:'🔮', name:'Crystals', meaning:'Clarity, healing, spiritual growth' }
+  { icon:'💧', name:'Water', meaning:'Emotions, unconscious mind, flow of life', keywords:['water', 'rain', 'wet', 'puddle', 'drip', 'splash', 'pour', 'flood', 'stream', 'river', 'lake', 'pool'] },
+  { icon:'🕊️', name:'Flying', meaning:'Freedom, escape, ambition, perspective', keywords:['fly', 'flying', 'flew', 'float', 'soar', 'soaring', 'hover', 'levitate', 'airborne', 'glide', 'wings'] },
+  { icon:'🏃', name:'Running', meaning:'Avoiding something, urgency, goals', keywords:['run', 'running', 'ran', 'sprint', 'chase', 'chasing', 'chased', 'flee', 'escape', 'racing'] },
+  { icon:'🏠', name:'House', meaning:'Self, different aspects of personality', keywords:['house', 'home', 'room', 'rooms', 'bedroom', 'kitchen', 'basement', 'attic', 'apartment', 'building'] },
+  { icon:'🚪', name:'Door', meaning:'Opportunity, transition, new phase', keywords:['door', 'doors', 'doorway', 'entrance', 'exit', 'threshold', 'gateway', 'portal'] },
+  { icon:'🐍', name:'Snake', meaning:'Transformation, hidden fears, healing', keywords:['snake', 'snakes', 'serpent', 'reptile', 'slither', 'viper', 'python', 'cobra'] },
+  { icon:'🌊', name:'Ocean', meaning:'Vast emotions, unconscious, mystery', keywords:['ocean', 'sea', 'beach', 'shore', 'waves', 'tide', 'surf', 'coast', 'seashore'] },
+  { icon:'🔥', name:'Fire', meaning:'Passion, destruction, transformation', keywords:['fire', 'flame', 'flames', 'burning', 'burn', 'burnt', 'blaze', 'inferno', 'smoke', 'ash'] },
+  { icon:'👶', name:'Baby', meaning:'New beginnings, vulnerability, potential', keywords:['baby', 'infant', 'newborn', 'child', 'pregnancy', 'pregnant', 'birth'] },
+  { icon:'💀', name:'Death', meaning:'Endings, transformation, change', keywords:['death', 'dead', 'die', 'dying', 'died', 'funeral', 'grave', 'cemetery', 'corpse', 'ghost'] },
+  { icon:'🦅', name:'Birds', meaning:'Freedom, spirituality, messages', keywords:['bird', 'birds', 'eagle', 'crow', 'raven', 'dove', 'owl', 'hawk', 'feather', 'nest', 'flock'] },
+  { icon:'🕷️', name:'Spiders', meaning:'Creativity, patience, feeling trapped', keywords:['spider', 'spiders', 'web', 'cobweb', 'tarantula', 'arachnid'] },
+  { icon:'🚗', name:'Vehicle', meaning:'Life journey, control, direction', keywords:['car', 'vehicle', 'drive', 'driving', 'drove', 'bus', 'train', 'truck', 'automobile'] },
+  { icon:'📚', name:'School', meaning:'Learning, anxiety, unpreparedness', keywords:['school', 'class', 'classroom', 'teacher', 'test', 'exam', 'homework', 'student', 'grade', 'college', 'university'] },
+  { icon:'👥', name:'People', meaning:'Aspects of self, relationships', keywords:['people', 'person', 'crowd', 'stranger', 'family', 'friend', 'someone', 'everyone'] },
+  { icon:'🌙', name:'Moon', meaning:'Feminine energy, cycles, intuition', keywords:['moon', 'lunar', 'moonlight', 'crescent', 'full moon'] },
+  { icon:'☀️', name:'Sun', meaning:'Consciousness, energy, optimism', keywords:['sun', 'sunny', 'sunshine', 'sunlight', 'sunset', 'sunrise', 'dawn', 'dusk'] },
+  { icon:'🌳', name:'Trees', meaning:'Growth, stability, life force', keywords:['tree', 'trees', 'forest', 'woods', 'branch', 'branches', 'trunk', 'bark', 'leaves', 'oak', 'pine'] },
+  { icon:'⚡', name:'Lightning', meaning:'Sudden change, revelation, power', keywords:['lightning', 'thunder', 'storm', 'thunderstorm', 'bolt', 'electric', 'electricity'] },
+  { icon:'🔮', name:'Crystals', meaning:'Clarity, healing, spiritual growth', keywords:['crystal', 'crystals', 'gem', 'gems', 'stone', 'stones', 'jewel', 'quartz'] }
 ];
 
 // ========================================
@@ -1945,7 +1976,7 @@ function renderEntries(){
       </div>
       ${entry.tags && entry.tags.length > 0 ? `
         <div class="entry-tags">
-          ${entry.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+          ${entry.tags.map(tag => `<span class="tag">${renderTagWithIcon(tag)}</span>`).join('')}
         </div>
       ` : ''}
       <div class="entry-text">${escapeHtml(entry.text)}</div>
@@ -1964,6 +1995,66 @@ function escapeHtml(text){
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+function getSymbolIcon(tagName){
+  const symbol = SYMBOLS.find(s => s.name.toLowerCase() === tagName.toLowerCase());
+  return symbol ? symbol.icon : '';
+}
+
+function renderTagWithIcon(tag){
+  const icon = getSymbolIcon(tag);
+  return icon ? `${icon} ${escapeHtml(tag)}` : escapeHtml(tag);
+}
+
+// ========================================
+// AUTO-DETECTION OF SYMBOLS/TAGS
+// ========================================
+function detectSymbolsInText(text){
+  if(!text) return [];
+  
+  const lowerText = text.toLowerCase();
+  const detectedSymbols = [];
+  
+  SYMBOLS.forEach(symbol => {
+    // Check if any keyword matches in the text
+    const found = symbol.keywords.some(keyword => {
+      // Use word boundaries to avoid false matches
+      const regex = new RegExp(`\\b${keyword}\\w*\\b`, 'i');
+      return regex.test(lowerText);
+    });
+    
+    if(found && !detectedSymbols.includes(symbol.name.toLowerCase())){
+      detectedSymbols.push(symbol.name.toLowerCase());
+    }
+  });
+  
+  return detectedSymbols;
+}
+
+function autoPopulateTags(text, containerId){
+  const detectedTags = detectSymbolsInText(text);
+  const container = $(containerId);
+  const existingTags = Array.from(container.querySelectorAll('.tag-chip')).map(chip => chip.dataset.tag);
+  
+  // Add detected tags that don't already exist
+  detectedTags.forEach(tag => {
+    if(!existingTags.includes(tag)){
+      const chip = createTagChip(tag, container);
+      const input = container.querySelector('.tag-input');
+      container.insertBefore(chip, input);
+    }
+  });
+  
+  updateTagSuggestions();
+  
+  // Show notification if tags were added
+  if(detectedTags.length > 0){
+    const newTags = detectedTags.filter(t => !existingTags.includes(t));
+    if(newTags.length > 0){
+      toast(`✨ Auto-detected: ${newTags.join(', ')}`);
+    }
+  }
 }
 
 // ========================================
@@ -2623,7 +2714,7 @@ function renderArchive(){
       </div>
       ${entry.tags && entry.tags.length > 0 ? `
         <div class="entry-tags">
-          ${entry.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+          ${entry.tags.map(tag => `<span class="tag">${renderTagWithIcon(tag)}</span>`).join('')}
         </div>
       ` : ''}
       <div class="entry-text">${escapeHtml(entry.text)}</div>
@@ -2959,6 +3050,31 @@ async function init(){
   $('interpretAllBtn').addEventListener('click', () => interpret('all'));
   $('clearChatBtn').addEventListener('click', clearChat);
   $('micBtn').addEventListener('click', toggleVoice);
+  
+  // Auto-detect symbols/tags
+  $('autoDetectBtn').addEventListener('click', () => {
+    const text = $('dreamText').value;
+    if(!text.trim()){
+      toast('⚠️ Write your dream first');
+      return;
+    }
+    autoPopulateTags(text, 'tagContainer');
+  });
+  
+  // Auto-detect on blur (when user finishes typing and clicks away)
+  let autoDetectTimer = null;
+  $('dreamText').addEventListener('input', () => {
+    // Clear existing timer
+    if(autoDetectTimer) clearTimeout(autoDetectTimer);
+    
+    // Auto-detect after 2 seconds of no typing
+    autoDetectTimer = setTimeout(() => {
+      const text = $('dreamText').value;
+      if(text.trim().length > 50){ // Only auto-detect if there's substantial text
+        autoPopulateTags(text, 'tagContainer');
+      }
+    }, 2000);
+  });
   
   // Chat
   $('sendChatBtn').addEventListener('click', sendChat);
