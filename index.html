@@ -1,3234 +1,773 @@
-<!doctype html>
-<!-- DREAM JOURNAL v1.6 - FIXED COMPRESSION - BUILD 20250212v6 -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Enhanced Dream Journal - Track, interpret, and analyze your dreams with AI assistance" />
-  <meta name="theme-color" content="#0b0f14" />
-  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiRHJlYW0gSm91cm5hbCIsInNob3J0X25hbWUiOiJEcmVhbXMiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBiMGYxNCIsInRoZW1lX2NvbG9yIjoiIzBiMGYxNCIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSXhNakFpSUdobGFXZG9kRDBpTVRJd0lqNDhjbVZqZENCM2FXUjBhRDBpTVRJd0lpQm9aV2xuYUhROUlqRXlNQ0lnWm1sc2JEMGlJekJpTUdZeE5DSXZQanh3WVhSb0lHUTlJazB6TUNBMk1HTXRNVFV1TXlBd0xUSTRMVEV5TGpjdE1qZ3RNamd1TXlBd0xURXlMamN0TVRVdU15QXhNaTQzTFRJNElESXRNVFV1TXlBeE5TNHpMVEk0SURJNExqTXRNVElnTXk0eExUSTNJRGt0TkRndU15QTVMVFEzSURKak1DMHhNQzQzSURndU55MHhPUzQwSURFNUxqUXRNalF1TmlBeExqZ3RNUzR6SURVdU5DMHhJRGt1TmkwMExqWWdOUzQxTFRNdU15QTJMalF0TmkwdU1pMHhNeTQwTFRJeUxqY3RNak11Tnkwek1TNDNNV010T1M0MExUa3ROeTQzTFRFNExqY3RNVFl0TWpjdU5pNHlMVGN1TnkweExqTXRNVFV1TmkwekxqY3RNVGt1TmkweUxqVXRNUzQ0TFRNdU5pMDBMakV0TlM0MUxUWXVNU0EyTGpFdE5pNHhJREV6TGpNZ01DMDROUzQxSURNNUxqVXROeTQ1SURFd015MHlNaTQxSURFeU15NDFJREUwSURJMElESTJMalVnTlRFdU5TSXZQanh3WVhSb0lHUTlJazAwTUNBNE1HTXRPQzQ1SURBdE1UWXRNeTQwTFRFMkxURXdJREF0TXk0MElEZ3VOUTB4TUNBeE1pNDFMVEV3SURFeElEQWdNVFl0T0M0MUlEQXRNVFlnTkRBdE5EQWdNVFl0TnlBd0xURXhJRFV0TVRVdU55QXhNQzB4TmlBeE1DMHhOeTQxSURBdE5DNDVMVGt1T0MwNExqY3RNVGd1TmkwdU9TMHhMalVnTmk0ekxUTXVPU0E0TGpjdE9TNDJJRGd1TnlBNElESXVNeTQzSURRdU55QXlMalFnTkM0eElEUWdOeTQzSURBZ05DNDVMVEV1TnlBNExqY3RNeTQ1SURrdU5pMDJMak1nTVM0MExURXVOU0EwTGpZdE15NHhJRGN0TkM0eElERXdMalF0TkM0M0lERTVMalV0TVM0eUlESXpMalVnTUM0NElERXhMakVnTVM0M0lERTNMalFnTnk0eElERTNMalFnTVRVdU1pQXdJREl3TGprdE5pNDVJREkzTGpNdE1UazBaaTQzTFRBdE1TNDRMVFF1TmkwdU5DMDVMalF0TGpSdE1UY2dNek5qTUM0MklEVWdOUzR6SURrdU5TQTFMak1nTVRRdU5TQXdJRFV0TkM0MklEa3VOUzA1TGpVZ09TNDFkRGt1TlMwdU5pQXhOQzQxTFRVdU15QXhOQzQxTFRrdU5TMHpMamN0TXk0MUxUWXVOaTAzTGpZdE55MHhNQzQzY3kwdU55MDFMall0TVM0ekxURXdMalV0TVMwdU5TMDBMalFnTkM0MUxUUXVOU0EzSURBZ01UQXVOeUF6TGpVZ01Ua3VOU0EwTGpNZ01qWXVOU0EwTGpNSWV5SXZQand2YzNablBnPT0iLCJzaXplcyI6IjEyOHgxMjgiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=" />
-  <title>Dream Journal Enhanced</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0f172a">
+  <title>Dream Journal</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiRHJlYW0gSm91cm5hbCIsInNob3J0X25hbWUiOiJEcmVhbXMiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBmMTcyYSIsInRoZW1lX2NvbG9yIjoiIzBmMTcyYSIsIm9yaWVudGF0aW9uIjoicG9ydHJhaXQiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhacFpYZENiM2c5SWpBZ01DQXhNakFnTVRJd0lpQjNhV1IwYUQwaU1USXdJaUJvWldsbmFIUTlJakV5TUNJK1BISmxZM1FnZUQwaU1DSWdlVDBpTUNJZ2QybGtkR2c5SWpFeU1DSWdhR1ZwWjJoMFBTSXhNakFpSUdacGJHdzlJaU13WmpFM01tRWlMejQ4Y0dGMGFDQmtQU0pOTmpBZ016QmpMVEUxTGpNZ01DMHlPQzB4TWk0M0xUSTRMVEk0TGpNZ01DMHhNaTQzTFRFMUxqTWdNVEl1TnkweU9DQXhMVEUxTGpNZ01UVXVNeTB5T0NBeU9DNHpMVEV5SURNdU1TMHlOeUE1TFRRNExqTWdPUzAwTnlBeVl6QXRNVEF1TnlBNExqY3RNVGt1TkNBeE9TNDBMVEkwTGpZZ01TNDRMVEV1TXlBMUxqUXRNVEF1TmlBMExqWWdOUzQxTFRNdU15QTJMalF0TmkweUxqSXRNVE11TkMweU1pNDNMVEl6TGpjdE16RWdNeTQyTFRBdU9TMDFMakl0TVM0MkxUZ3VNVDB4TUMwdU5DMDFMakl0TVM0MkxUZ3VNVDB4TUMweExqUXROUzR6TFRrdU5TMDFMak10TVRRdU5TMHpMamN0TXk0MUxUWXVOaTAzTGpZdE55MHhNQzQzY3kwdU55MDVMV010TlM0MExUa3VOaTAzTGpNdE1UZ3VOVDB4TnkweU55NDBMVE11T1MwME1TMDBMalF0TlRRZ01BMHpMalVnTVRRdU5TMDBMalFnTXpFdU15QXVPQ0F6T1M0MExURXdJRFEyTFRFMElEUTJMVE15TGpNZ01DMDNMamd0TXk0MUxURXlMalF0T0MweE9TNDJMVEl4TGpNdE1qSXVOQzB6TXk0eklETXVOUzB4TlM0ekxUY3VNVDB4Tmkwek1pNDBMVE11T1MwME15MDBMalF0TlRRZ01DMDRMalVnTWprZ01DQXhOaTAzTGpVZ01DMHhOaUEwTUMwME1DQXhOaTAzSURBdE1URWdOUzB4TlM0M0lERXdMVEUySURFd0xURTNMalVnTUMwMExqa3RPUzQ0TFRndU55MHhPQzQySURBdE1TNDFJRFl1TXkwekxqa2dPQzQzTFRrdU55QTRMamNnTWk0eklESWdNaTQwSURRZ055QXdJRFF1T1MweExqY2dPQzQzTFRNdU9TQTVMall0Tmk0eklERXVOQzB4TGpVZ05DNDJMVEl1T0NBM0xUUXVNU0F4TUM0MExUUXVOeUF4T1M0MUxURXVNeUF5TXk0MUlEQXVPQ0F4TVM0eElERXVOeUF4Tnk0MElEY3VNVDB4Tnk0MElERTFMaklnTUNBeU1DNDVMVFl1T1NBeU55NHpMVEU1TGpSdE1URXROeTR4WXpBdU55MHlMallnTWk0NExUUXVOeUExTGpNdE5TNDNJRFl1TlMweUxqVWdPQzR4TFRndU9DQTVMall0TVRZdU1pQTVMall0TVRZdU1pMHpMalV0TXk0MkxUWXVOUzAzTGprdE5pNHpMVEV4TGpJdE1UQXVPU0EzTGpVdE1UUWdNalV0TVRVZ05EQXRNalVnTVRVZ01DMHhNQzR5SURJdU9DMDVMalVnTnk0ekxURXhJREV5TGpndE1Ua2dNVFl1T0MweU5DNDFMVGt1TnkweE5pNHhMVEUyTGpVdE16SXVOeUExTGpJdE15NDVJREV4TGprdE5TNDBJRFk1TGpjdE5pQXhNRGt0TVRVdU1TQXhNVGd0TWprdU5TMHhNeTQwSURBdE15NDBMVGd1TlMwdU5TMDBMalV0TlM0MUxURXdMalFnTUMwMExqZ3RNUzR6TFRrdU55MDBNQTB6TFRJdU55MDFJREF0T0MwekxqWXRPQzB5TGpNdE1TMDFMaklnTUMweExqUXRNUzR5TFRJdU5TMHlMall0TWk0MExUWWdNQzAwTGpZdE15MHhNQzB5TGpZdE1UQWdNQ0F3TFRZdU55MHhNQzQyTFRFM0lERXpMakV0TWpZdU15MHhPU0F6TFRRdU5TQTBMall0T0M0MklERXdMall0TVRJdU55SXZQanh3WVhSb0lHUTlJazAwTUNBNE1HTXRPQZBNVEF3SURBdE1UWXRNeTQwTFRFMkxURXdJREF0TXk0MElEZ3VOU0F4TUNBeE1pNDFMVEV3SURFeElEQWdNVFl0T0M0MUlEQXRNVFlnTkRBdE5EQWdNVFl0TnlBd0xURXhJRFV0TVRVdU55QXhNQzB4TmlBeE1DMHhOeTQxSURBdE5DNDVMVGN1T1RBNExqY3RNVGd1TmlBd0xURXVOU0EyTGpNdE15NDVJRGd1TnkwNUxqWWdPQzQzTFRFd0xEQWdNaTR6TFRjdU1pQTBMamN0TVRJdU55QTBMamN0TVRBdU1pQXdMVEV1TnlBeUxqRXRNeTQxSURRdU55MDBMamNnTlM0M0lEQWdNeUF6SURZdU9DQTFMalVnTVRBdU1pQXhNeTQxSURFNUxqVWdNalF1TnlBMU1DQXpNUzQzSURNNExqTXRNak11TmlBeE15NDBMVEl5TGpVZ01qY3VNeTAwTWk0eklEUXRNVFF1TlMweE5DNDRMVE0zTGpJdE1qUXVOeTB6T1M0MUxUSTJMamd0TkRZZ01DQXpMakl0TkM0M0lERXRPQzQwSURFdU5TMHpMamNnTUM0MExUSTBJRE11Tnkwek5TNHhJRGd0TkRNdU5TQXhNUzR6SUMwaExtNGdNaTB4TGpVZ01DNDFMVE11TnlBeExqZ3ROU0E1Y3kwdU5TMDBMalVnTUM0eUxUa3VOQ0F3TFRFekxqUWdNQzAxTGpZdE1TNDRNVEF1TlMwdU9DMHhPUzQxTFRJdU5DMHlOQzQwSURBdE5DNDNMVEV1TmlBM0xUSXVOU0F4TXk0ekxURXdMalVnTWpNdU1TMDROUzQxSURJekxqTWdORGNnTUNBeE1DNDFMVGt1TXlBeE9TNDJMVEUzTGpjZ01qa3ROREV1TXlBM0xURXdMamd0TkM0dExUSXpMamd0TVRNdE16WXVOaTB5TXlJdlBqd3ZjM1puUGc9PSIsInNpemVzIjoiMTI4eDEyOCIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dfQ==">
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     
-    :root{
-      --bg:#0b0f14; --card:#111826; --text:#e8eef7; --muted:#a9b5c6; --accent:#6ee7ff;
-      --good:#34d399; --warn:#fbbf24; --bad:#fb7185; --border:rgba(255,255,255,.10);
-      --purple:#a78bfa; --pink:#f472b6; --orange:#fb923c;
-      --mono: 'Space Mono', ui-monospace, monospace;
-      --sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      --serif: 'Crimson Pro', Georgia, serif;
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #334155;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-hover: #3b82f6;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --border: rgba(148, 163, 184, 0.1);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
     }
     
-    [data-theme="light"]{
-      --bg:#f8f9fa; --card:#ffffff; --text:#1a202c; --muted:#64748b; 
-      --border:rgba(0,0,0,.12); --accent:#0891b2;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
     
-    *{box-sizing:border-box; margin:0; padding:0}
-    html,body{height:100%; scroll-behavior:smooth}
-    body{
-      font-family:var(--sans); color:var(--text); line-height:1.6;
-      background:var(--bg);
-      transition: background 0.3s ease, color 0.3s ease;
+    /* App Container */
+    .app-container {
+      max-width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     
-    body::before{
-      content:'';
-      position:fixed;
-      top:0; left:0; right:0; bottom:0;
-      background:radial-gradient(1200px 700px at 20% 10%, rgba(110,231,255,.08) 0%, transparent 55%);
-      pointer-events:none;
-      z-index:0;
-      opacity:0;
-      animation: fadeInBg 1s ease forwards;
+    /* Header */
+    .app-header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
     }
     
-    @keyframes fadeInBg{
-      to{opacity:1}
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     
-    .container{
-      position:relative;
-      z-index:1;
-      max-width:1400px;
-      margin:0 auto;
-      padding:20px;
+    .app-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     
-    /* === Header === */
-    header{
-      display:flex; gap:20px; align-items:flex-start; justify-content:space-between; 
-      flex-wrap:wrap; margin-bottom:30px;
-      opacity:0;
-      animation: slideDown 0.6s ease 0.2s forwards;
+    .header-actions {
+      display: flex;
+      gap: 0.5rem;
     }
     
-    @keyframes slideDown{
-      from{opacity:0; transform:translateY(-20px)}
-      to{opacity:1; transform:translateY(0)}
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.3);
+      z-index: 90;
     }
     
-    h1{
-      font-family:var(--serif); 
-      font-size:42px; 
-      font-weight:600; 
-      letter-spacing:-0.5px;
-      background:linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 0.75rem;
     }
     
-    .subtitle{
-      margin:8px 0 0; 
-      color:var(--muted); 
-      font-size:15px;
-      font-family:var(--mono);
+    .nav-item.active {
+      color: var(--accent);
     }
     
-    .header-right{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
+    .nav-icon {
+      font-size: 1.5rem;
     }
     
-    /* === Tabs === */
-    .tabs{
-      display:flex;
-      gap:8px;
-      margin-bottom:24px;
-      border-bottom:2px solid var(--border);
-      padding-bottom:0;
-      flex-wrap:wrap;
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 1rem 1rem calc(4rem + env(safe-area-inset-bottom));
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
     }
     
-    .tab{
-      padding:12px 20px;
-      border:none;
-      background:transparent;
-      color:var(--muted);
-      cursor:pointer;
-      font-size:15px;
-      font-weight:500;
-      border-bottom:3px solid transparent;
-      transition:all 0.2s ease;
-      position:relative;
-      bottom:-2px;
-    }
-    
-    .tab:hover{color:var(--text)}
-    .tab.active{
-      color:var(--accent);
-      border-bottom-color:var(--accent);
-    }
-    
-    .tab-content{
-      display:none;
+    .view {
+      display: none;
       animation: fadeIn 0.3s ease;
     }
     
-    .tab-content.active{display:block}
-    
-    @keyframes fadeIn{
-      from{opacity:0; transform:translateY(10px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-    
-    /* === Cards === */
-    .grid{
-      display:grid; 
-      grid-template-columns:1fr; 
-      gap:20px;
-    }
-    
-    @media(min-width:1024px){ 
-      .grid{grid-template-columns: 1fr 1fr;} 
-      .grid.triple{grid-template-columns: 1fr 1fr 1fr;}
-    }
-    
-    .card{
-      background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--border);
-      border-radius:20px;
-      padding:24px;
-      box-shadow:0 8px 32px rgba(0,0,0,.2);
-      backdrop-filter:blur(10px);
-      transition:all 0.3s ease;
-    }
-    
-    .card:hover{
-      box-shadow:0 12px 48px rgba(0,0,0,.3);
-      transform:translateY(-2px);
-    }
-    
-    .card h2{
-      font-family:var(--serif);
-      font-size:24px; 
-      margin:0 0 16px; 
-      font-weight:600;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    
-    .card h3{
-      font-size:18px;
-      margin:20px 0 12px;
-      font-weight:600;
+    .view.active {
+      display: block;
     }
-    
-    /* === Form Elements === */
-    label{
-      font-size:13px; 
-      color:var(--muted); 
-      display:block; 
-      margin:0 0 8px;
-      font-weight:500;
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    
-    input[type="text"], 
-    input[type="password"], 
-    input[type="date"],
-    input[type="file"],
-    textarea, 
-    select{
-      width:100%;
-      background:rgba(0,0,0,.3);
-      border:1px solid var(--border);
-      color:var(--text);
-      border-radius:12px;
-      padding:12px 14px;
-      font-size:14px;
-      outline:none;
-      transition:all 0.2s ease;
-      font-family:var(--sans);
-    }
-    
-    input:focus, textarea:focus, select:focus{
-      border-color:var(--accent);
-      box-shadow:0 0 0 3px rgba(110,231,255,.1);
-    }
-    
-    textarea{
-      min-height:120px; 
-      resize:vertical;
-      font-family:var(--sans);
-      line-height:1.6;
-    }
-    
-    .char-count{
-      text-align:right;
-      font-size:12px;
-      color:var(--muted);
-      margin-top:4px;
-      font-family:var(--mono);
-    }
-    
-    /* === Buttons === */
-    .btn-group{
-      display:flex; 
-      gap:10px; 
-      flex-wrap:wrap; 
-      align-items:center;
-      margin-top:16px;
-    }
-    
-    .btn{
-      cursor:pointer;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      color:var(--text);
-      padding:12px 18px;
-      border-radius:12px;
-      font-size:14px;
-      display:inline-flex; 
-      align-items:center; 
-      gap:8px;
-      transition:all 0.2s ease;
-      font-weight:500;
-      white-space:nowrap;
-    }
-    
-    .btn:hover{
-      border-color:var(--accent);
-      background:rgba(110,231,255,.12);
-      transform:translateY(-1px);
-    }
-    
-    .btn.primary{
-      border-color:var(--accent); 
-      background:rgba(110,231,255,.15);
-      color:var(--accent);
-    }
-    
-    .btn.good{
-      border-color:var(--good); 
-      background:rgba(52,211,153,.12);
-      color:var(--good);
-    }
-    
-    .btn.bad{
-      border-color:var(--bad); 
-      background:rgba(251,113,133,.12);
-      color:var(--bad);
-    }
-    
-    .btn:disabled{
-      opacity:.5; 
-      cursor:not-allowed;
-      transform:none;
-    }
-    
-    .btn.loading::after{
-      content:'';
-      width:12px;
-      height:12px;
-      border:2px solid var(--text);
-      border-top-color:transparent;
-      border-radius:50%;
-      animation:spin 0.6s linear infinite;
-    }
-    
-    @keyframes spin{
-      to{transform:rotate(360deg)}
-    }
-    
-    /* === Pills/Badges === */
-    .pill{
-      font-size:12px; 
-      padding:6px 12px; 
-      border-radius:999px;
-      border:1px solid var(--border); 
-      color:var(--muted);
-      background:rgba(255,255,255,.04);
-      display:inline-flex; 
-      align-items:center; 
-      gap:6px;
-      font-weight:500;
-      white-space:nowrap;
-    }
-    
-    .pill.ok{color:var(--good); border-color:rgba(52,211,153,.4); background:rgba(52,211,153,.1)}
-    .pill.warn{color:var(--warn); border-color:rgba(251,191,36,.4); background:rgba(251,191,36,.1)}
-    .pill.bad{color:var(--bad); border-color:rgba(251,113,133,.4); background:rgba(251,113,133,.1)}
-    
-    .pill-group{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    
-    /* === Entries === */
-    .entries-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:16px;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-    
-    .search-box{
-      position:relative;
-      flex:1;
-      min-width:200px;
-    }
-    
-    .search-box input{
-      padding-left:36px;
-    }
-    
-    .search-icon{
-      position:absolute;
-      left:12px;
-      top:50%;
-      transform:translateY(-50%);
-      color:var(--muted);
-      pointer-events:none;
-    }
-    
-    .entries-list{
-      display:flex; 
-      flex-direction:column; 
-      gap:16px;
-      max-height:650px;
-      overflow-y:auto;
-      overflow-x:hidden;
-      padding-right:8px;
-      margin-top:16px;
-      scroll-behavior:smooth;
-    }
-    
-    .entries-list::-webkit-scrollbar{
-      width:6px;
-    }
-    
-    .entries-list::-webkit-scrollbar-track{
-      background:rgba(0,0,0,.2);
-      border-radius:3px;
-    }
-    
-    .entries-list::-webkit-scrollbar-thumb{
-      background:rgba(110,231,255,.4);
-      border-radius:3px;
-    }
-    
-    .entries-list::-webkit-scrollbar-thumb:hover{
-      background:rgba(110,231,255,.6);
-    }
-    
-    .entry{
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.25);
-      border-radius:16px;
-      padding:20px;
-      transition:all 0.2s ease;
-      position:relative;
-      overflow:hidden;
-      flex-shrink:0;
-      min-height:fit-content;
-    }
-    
-    
-    .entry::before{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      width:4px;
-      height:100%;
-      background:var(--accent);
-      opacity:0;
-      transition:opacity 0.2s ease;
-    }
-    
-    .entry:hover{
-      border-color:rgba(110,231,255,.3);
-      background:rgba(0,0,0,.3);
-    }
-    
-    .entry:hover::before{opacity:1}
-    
-    .entry.editing{
-      border-color:var(--accent);
-      box-shadow:0 0 0 3px rgba(110,231,255,.1);
-    }
-    
-    .entry-top{
-      display:flex; 
-      justify-content:space-between; 
-      gap:12px; 
-      align-items:flex-start;
-      margin-bottom:12px;
-    }
-    
-    .entry-title{
-      font-size:16px; 
-      font-weight:600;
-      flex:1;
-    }
-    
-    .entry-meta{
-      font-size:12px; 
-      color:var(--muted);
-      display:flex;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-      font-family:var(--mono);
-    }
     
-    .entry-text{
-      font-size:14px; 
-      color:rgba(232,238,247,.9); 
-      white-space:pre-wrap;
-      line-height:1.6;
-      margin-bottom:12px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
-    .entry-tags{
-      display:flex;
-      gap:6px;
-      flex-wrap:wrap;
-      margin-bottom:12px;
+    /* Cards */
+    .card {
+      background: var(--bg-secondary);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
     }
     
-    .tag{
-      font-size:11px;
-      padding:4px 10px;
-      background:rgba(110,231,255,.1);
-      color:var(--accent);
-      border-radius:999px;
-      border:1px solid rgba(110,231,255,.2);
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
     }
     
-    .entry-actions{
-      display:flex; 
-      gap:8px; 
-      flex-wrap:wrap;
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
     }
     
-    .mini-btn{
-      cursor:pointer;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.05);
-      color:var(--text);
-      padding:6px 12px;
-      border-radius:10px;
-      font-size:12px;
-      transition:all 0.2s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+      box-shadow: var(--shadow);
     }
     
-    .mini-btn:hover{
-      border-color:var(--accent);
-      background:rgba(110,231,255,.1);
+    .btn-primary {
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+      color: white;
     }
     
-    .entry-image{
-      width:100%;
-      border-radius:12px;
-      margin-top:12px;
-      max-height:400px;
-      object-fit:cover;
+    .btn-primary:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
     }
     
-    /* === Chat === */
-    .chat-container{
-      display:flex;
-      flex-direction:column;
-      height:600px;
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
     }
     
-    .chat-messages{
-      flex:1;
-      overflow-y:auto;
-      padding:16px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      background:rgba(0,0,0,.2);
-      border-radius:16px 16px 0 0;
-      border:1px solid var(--border);
-      border-bottom:none;
+    .btn-success {
+      background: var(--success);
+      color: white;
     }
     
-    .message{
-      max-width:85%;
-      padding:12px 16px;
-      border-radius:16px;
-      border:1px solid var(--border);
-      white-space:pre-wrap;
-      font-size:14px;
-      line-height:1.6;
-      animation: messageSlide 0.3s ease;
+    .btn-danger {
+      background: var(--danger);
+      color: white;
     }
     
-    @keyframes messageSlide{
-      from{opacity:0; transform:translateY(10px)}
-      to{opacity:1; transform:translateY(0)}
+    .btn-block {
+      width: 100%;
     }
     
-    .message.user{
-      margin-left:auto;
-      background:rgba(110,231,255,.12);
-      border-color:rgba(110,231,255,.3);
-      color:var(--text);
+    .btn-sm {
+      padding: 0.5rem 0.875rem;
+      font-size: 0.875rem;
     }
     
-    .message.assistant{
-      margin-right:auto;
-      background:rgba(255,255,255,.06);
+    /* Inputs */
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.875rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.2s ease;
     }
     
-    .chat-input-area{
-      display:flex;
-      gap:10px;
-      padding:16px;
-      background:rgba(0,0,0,.2);
-      border:1px solid var(--border);
-      border-radius:0 0 16px 16px;
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
     }
     
-    .chat-input-area input{
-      flex:1;
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      font-family: inherit;
     }
     
-    /* === Calendar View === */
-    .calendar{
-      display:grid;
-      grid-template-columns:repeat(7, 1fr);
-      gap:8px;
-      margin-top:16px;
+    .form-group {
+      margin-bottom: 1rem;
     }
     
-    .calendar-day{
-      aspect-ratio:1;
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:8px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      font-size:12px;
-      cursor:pointer;
-      transition:all 0.2s ease;
-      position:relative;
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
     }
     
-    .calendar-day:hover{
-      border-color:var(--accent);
-      background:rgba(110,231,255,.08);
+    /* Dream Entry */
+    .dream-entry {
+      background: var(--bg-secondary);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
     }
     
-    .calendar-day.has-dreams{
-      background:rgba(110,231,255,.1);
-      border-color:var(--accent);
+    .dream-entry:active {
+      transform: scale(0.99);
     }
     
-    .calendar-day.has-dreams::after{
-      content:'';
-      position:absolute;
-      bottom:4px;
-      width:6px;
-      height:6px;
-      background:var(--accent);
-      border-radius:50%;
+    .dream-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
     }
     
-    .calendar-header{
-      font-weight:600;
-      color:var(--muted);
-      text-transform:uppercase;
-      font-size:11px;
-      letter-spacing:0.5px;
+    .dream-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
     }
     
-    /* === Stats === */
-    .stats-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
-      gap:16px;
-      margin-top:16px;
+    .dream-date {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
     }
     
-    .stat-card{
-      background:rgba(0,0,0,.25);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:20px;
-      text-align:center;
-      transition:all 0.2s ease;
+    .dream-content {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
     }
     
-    .stat-card:hover{
-      transform:translateY(-2px);
-      border-color:var(--accent);
+    .dream-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
     }
     
-    .stat-value{
-      font-size:36px;
-      font-weight:700;
-      font-family:var(--mono);
-      color:var(--accent);
-      margin-bottom:8px;
+    .tag {
+      padding: 0.375rem 0.75rem;
+      background: rgba(96, 165, 250, 0.1);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 500;
     }
     
-    .stat-label{
-      font-size:13px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:0.5px;
+    .dream-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
     
-    .chart{
-      margin-top:20px;
-      padding:16px;
-      background:rgba(0,0,0,.2);
-      border-radius:14px;
-      border:1px solid var(--border);
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1.5rem;
     }
     
-    .bar-chart{
-      display:flex;
-      gap:8px;
-      align-items:flex-end;
-      height:200px;
-      margin-top:16px;
+    .empty-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
     }
     
-    .bar{
-      flex:1;
-      background:linear-gradient(180deg, var(--accent), rgba(110,231,255,.3));
-      border-radius:8px 8px 0 0;
-      position:relative;
-      min-height:10px;
-      transition:all 0.3s ease;
+    .empty-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
     }
     
-    .bar:hover{
-      transform:scaleY(1.05);
-      filter:brightness(1.2);
+    .empty-text {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
     }
     
-    .bar-label{
-      position:absolute;
-      bottom:-24px;
-      left:0;
-      right:0;
-      text-align:center;
-      font-size:10px;
-      color:var(--muted);
+    /* FAB (Floating Action Button) */
+    .fab {
+      position: fixed;
+      bottom: calc(5rem + env(safe-area-inset-bottom));
+      right: 1.5rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+      color: white;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-lg);
+      border: none;
+      cursor: pointer;
+      z-index: 80;
+      transition: all 0.2s ease;
     }
     
-    /* === Symbol Dictionary === */
-    .symbol-list{
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
-      gap:12px;
-      margin-top:16px;
+    .fab:active {
+      transform: scale(0.95);
     }
     
-    .symbol-card{
-      background:rgba(0,0,0,.2);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:16px;
-      transition:all 0.2s ease;
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: flex-end;
+      z-index: 200;
+      animation: fadeIn 0.2s ease;
     }
     
-    .symbol-card:hover{
-      border-color:var(--accent);
-      background:rgba(0,0,0,.3);
+    .modal.active {
+      display: flex;
     }
     
-    .symbol-icon{
-      font-size:32px;
-      margin-bottom:8px;
+    .modal-content {
+      background: var(--bg-secondary);
+      border-radius: 1.5rem 1.5rem 0 0;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.5rem;
+      padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+      animation: slideUp 0.3s ease;
     }
     
-    .symbol-name{
-      font-weight:600;
-      font-size:16px;
-      margin-bottom:6px;
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
     }
     
-    .symbol-meaning{
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.5;
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
     }
     
-    /* === Modals === */
-    .modal{
-      display:none;
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
-      background:rgba(0,0,0,.8);
-      backdrop-filter:blur(10px);
-      z-index:1000;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      animation:fadeIn 0.2s ease;
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
     }
     
-    .modal.active{display:flex}
-    
-    .modal-content{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:20px;
-      padding:32px;
-      max-width:600px;
-      width:100%;
-      max-height:90vh;
-      overflow-y:auto;
-      box-shadow:0 20px 60px rgba(0,0,0,.5);
-      animation:scaleIn 0.3s ease;
-    }
-    
-    @keyframes scaleIn{
-      from{opacity:0; transform:scale(0.95)}
-      to{opacity:1; transform:scale(1)}
-    }
-    
-    .modal-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:24px;
+    .modal-close {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: none;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
     
-    .modal-header h2{
-      margin:0;
-      font-family:var(--serif);
-      font-size:28px;
-    }
-    
-    .close-modal{
-      cursor:pointer;
-      background:none;
-      border:none;
-      font-size:32px;
-      color:var(--muted);
-      padding:0;
-      width:32px;
-      height:32px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:all 0.2s ease;
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
     }
-    
-    .close-modal:hover{
-      color:var(--text);
-      transform:rotate(90deg);
-    }
-    
-    /* === Toast === */
-    .toast{
-      position:fixed; 
-      left:50%; 
-      bottom:24px; 
-      transform:translateX(-50%);
-      background:rgba(17,24,38,.98);
-      border:1px solid rgba(255,255,255,.15);
-      color:var(--text);
-      padding:14px 20px;
-      border-radius:12px;
-      font-size:14px;
-      box-shadow:0 12px 40px rgba(0,0,0,.4);
-      z-index:9999;
-      opacity:0;
-      transition:opacity .2s ease;
-      pointer-events:none;
-      max-width:min(500px, calc(100vw - 40px));
-      font-weight:500;
-    }
     
-    /* === Empty States === */
-    .empty-state{
-      text-align:center;
-      padding:60px 20px;
-      color:var(--muted);
-    }
-    
-    .empty-state-icon{
-      font-size:64px;
-      margin-bottom:16px;
-      opacity:0.5;
+    ::-webkit-scrollbar-track {
+      background: var(--bg-tertiary);
     }
     
-    .empty-state h3{
-      font-size:20px;
-      margin-bottom:8px;
-      color:var(--text);
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
     }
     
-    .empty-state p{
-      font-size:14px;
-      max-width:400px;
-      margin:0 auto;
-    }
-    
-    /* === Utilities === */
-    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .grow{flex:1}
-    .muted{color:var(--muted); font-size:13px}
-    .small{font-size:12px}
-    .hr{height:1px; background:var(--border); margin:20px 0}
-    .kbd{
-      font-family:var(--mono); 
-      font-size:11px; 
-      padding:3px 8px; 
-      border-radius:6px; 
-      border:1px solid var(--border); 
-      color:var(--muted); 
-      background:rgba(0,0,0,.3);
-      display:inline-block;
-    }
-    
-    .hidden{display:none !important}
-    
-    /* === Scrollbar === */
-    ::-webkit-scrollbar{width:10px; height:10px}
-    ::-webkit-scrollbar-track{background:rgba(0,0,0,.2)}
-    ::-webkit-scrollbar-thumb{
-      background:rgba(255,255,255,.2);
-      border-radius:5px;
-    }
-    ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.3)}
-    
-    /* === Loading Spinner === */
-    .spinner{
-      width:40px;
-      height:40px;
-      border:4px solid rgba(255,255,255,.1);
-      border-top-color:var(--accent);
-      border-radius:50%;
-      animation:spin 0.8s linear infinite;
-      margin:40px auto;
-    }
-    
-    /* === Markdown Rendered Content === */
-    .rendered-markdown h1,
-    .rendered-markdown h2,
-    .rendered-markdown h3{
-      margin-top:20px;
-      margin-bottom:10px;
-    }
-    
-    .rendered-markdown p{
-      margin-bottom:12px;
-    }
-    
-    .rendered-markdown ul,
-    .rendered-markdown ol{
-      margin-left:20px;
-      margin-bottom:12px;
-    }
-    
-    .rendered-markdown code{
-      background:rgba(0,0,0,.3);
-      padding:2px 6px;
-      border-radius:4px;
-      font-family:var(--mono);
-      font-size:12px;
-    }
-    
-    .rendered-markdown pre{
-      background:rgba(0,0,0,.3);
-      padding:12px;
-      border-radius:8px;
-      overflow-x:auto;
-      margin-bottom:12px;
-    }
-    
-    /* === Tag Input === */
-    .tag-input-container{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-      padding:8px;
-      background:rgba(0,0,0,.3);
-      border:1px solid var(--border);
-      border-radius:12px;
-      min-height:46px;
-      align-items:center;
-    }
-    
-    .tag-input-container:focus-within{
-      border-color:var(--accent);
-      box-shadow:0 0 0 3px rgba(110,231,255,.1);
-    }
-    
-    .tag-chip{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:4px 10px;
-      background:rgba(110,231,255,.15);
-      color:var(--accent);
-      border-radius:999px;
-      font-size:12px;
-      border:1px solid rgba(110,231,255,.3);
-    }
-    
-    .tag-chip button{
-      background:none;
-      border:none;
-      color:var(--accent);
-      cursor:pointer;
-      padding:0;
-      display:flex;
-      align-items:center;
-      font-size:16px;
-      line-height:1;
-    }
-    
-    .tag-chip button:hover{
-      color:var(--bad);
-    }
-    
-    .tag-input{
-      flex:1;
-      min-width:100px;
-      border:none;
-      background:transparent;
-      color:var(--text);
-      outline:none;
-      font-size:14px;
-      padding:4px;
-    }
-    
-    .tag-suggestions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-      margin-top:8px;
-    }
-    
-    .tag-suggestion{
-      padding:4px 10px;
-      background:rgba(255,255,255,.05);
-      border:1px solid var(--border);
-      border-radius:999px;
-      font-size:11px;
-      cursor:pointer;
-      color:var(--muted);
-      transition:all 0.2s ease;
-    }
-    
-    .tag-suggestion:hover{
-      background:rgba(110,231,255,.1);
-      border-color:var(--accent);
-      color:var(--accent);
-    }
-
-    /* === Lucid Dreaming === */
-    .lucid-card{
-      background:linear-gradient(135deg, rgba(167,139,250,.1), rgba(244,114,182,.1));
-      border-color:rgba(167,139,250,.3);
-    }
-    
-    .reality-check{
-      background:rgba(0,0,0,.3);
-      padding:12px;
-      border-radius:10px;
-      border-left:3px solid var(--purple);
-      margin-bottom:10px;
-      font-size:14px;
-    }
-    
-    /* === Responsive === */
-    @media(max-width:768px){
-      h1{font-size:32px}
-      .tabs{overflow-x:auto; -webkit-overflow-scrolling:touch}
-      .tab{white-space:nowrap}
-      .calendar{grid-template-columns:repeat(4, 1fr)}
-      .stats-grid{grid-template-columns:1fr}
-    }
+    /* Utilities */
+    .text-center { text-align: center; }
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-4 { gap: 1rem; }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">
+          🌙 Dreams
+        </h1>
+        <div class="header-actions">
+          <button class="btn btn-sm btn-secondary" onclick="showSettings()">⚙️</button>
+        </div>
+      </div>
+    </header>
 
-<div class="container">
-  <header>
-    <div>
-      <h1>✨ Dream Journal</h1>
-      <p class="subtitle">Enhanced • AI-Powered • Pattern Analysis • Lucid Dreaming</p>
-    </div>
-    <div class="header-right">
-      <span id="savePill" class="pill warn">💾 Checking storage…</span>
-      <span id="apiPill" class="pill warn">🤖 API not set</span>
-      <button id="themeToggle" class="btn" title="Toggle theme">🌓</button>
-    </div>
-  </header>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Journal View -->
+      <div id="journalView" class="view active">
+        <div id="dreamsList"></div>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">🌙</div>
+          <h3 class="empty-title">No dreams yet</h3>
+          <p class="empty-text">Tap the + button to record your first dream</p>
+        </div>
+      </div>
 
-  <div class="tabs">
-    <button class="tab active" data-tab="journal">📔 Journal</button>
-    <button class="tab" data-tab="calendar">📅 Calendar</button>
-    <button class="tab" data-tab="stats">📊 Statistics</button>
-    <button class="tab" data-tab="archive">📦 Archive</button>
-    <button class="tab" data-tab="symbols">🔮 Symbol Dictionary</button>
-    <button class="tab" data-tab="lucid">🌙 Lucid Dreaming</button>
-    <button class="tab" data-tab="settings">⚙️ Settings</button>
-  </div>
+      <!-- Stats View -->
+      <div id="statsView" class="view">
+        <div class="card">
+          <h2 class="card-title mb-2">📊 Your Dream Statistics</h2>
+          <div id="statsContent"></div>
+        </div>
+      </div>
 
-  <!-- ============ JOURNAL TAB ============ -->
-  <div id="tab-journal" class="tab-content active">
-    <div class="grid">
-      <!-- Left Column -->
-      <div class="card">
-        <h2>📝 Capture Your Dream</h2>
-        
-        <div class="row">
-          <div class="grow">
-            <label for="title">Title (optional)</label>
-            <input id="title" type="text" placeholder="e.g., Flying over the city" />
+      <!-- Archive View -->
+      <div id="archiveView" class="view">
+        <div class="card">
+          <h2 class="card-title mb-2">📦 Archived Dreams</h2>
+          <div id="archiveList"></div>
+        </div>
+      </div>
+
+      <!-- Settings View -->
+      <div id="settingsView" class="view">
+        <div class="card">
+          <h2 class="card-title mb-2">⚙️ Settings</h2>
+          <div class="form-group">
+            <label>OpenAI API Key</label>
+            <input type="password" id="apiKeyInput" placeholder="sk-...">
           </div>
-          <div style="min-width:180px">
-            <label for="mood">Mood</label>
-            <select id="mood">
-              <option value="">Choose mood…</option>
-              <option>😰 Nervous</option>
-              <option>😌 Calm</option>
-              <option>😢 Sad</option>
-              <option>😠 Angry</option>
-              <option>😕 Confused</option>
-              <option>😊 Relieved</option>
-              <option>🤩 Excited</option>
-              <option>😶 Empty</option>
-              <option>😵 Overwhelmed</option>
-              <option>😱 Terrified</option>
-              <option>🥰 Loving</option>
-              <option>😎 Confident</option>
-            </select>
-          </div>
+          <button class="btn btn-primary btn-block" onclick="saveSettings()">Save Settings</button>
         </div>
-
-        <div style="margin-top:16px">
-          <label for="dreamText">Dream Content</label>
-          <textarea id="dreamText" placeholder="Describe what happened, who was there, where you were, any symbols (water, animals, numbers, doors, flying, falling, etc.)…"></textarea>
-          <div class="char-count">
-            <span id="charCount">0</span> / 5000 characters
-          </div>
-          <div class="muted small" id="interimHint" style="margin-top:6px; display:none;">
-            🎤 Listening: <span id="interimText"></span>
-          </div>
-        </div>
-
-        <div style="margin-top:16px">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
-            <label style="margin:0">Tags / Symbols</label>
-            <button id="autoDetectBtn" class="btn" style="padding:6px 12px; font-size:12px">✨ Auto-Detect</button>
-          </div>
-          <div class="tag-input-container" id="tagContainer">
-            <input type="text" class="tag-input" id="tagInput" placeholder="Type and press Enter…" />
-          </div>
-          <div class="tag-suggestions" id="tagSuggestions"></div>
-          <p class="muted small" style="margin-top:6px">💡 Auto-detects symbols from your dream text</p>
-        </div>
-
-        <div style="margin-top:16px">
-          <label for="imageUpload">Sketch or Image (optional)</label>
-          <input id="imageUpload" type="file" accept="image/*" />
-        </div>
-
-        <div class="btn-group">
-          <button id="micBtn" class="btn" title="Voice to text">🎙️ <span id="micLabel">Voice</span></button>
-          <button id="addBtn" class="btn good">✅ Save Entry</button>
-          <button id="newNightBtn" class="btn">🌙 New Night</button>
-        </div>
-        <p class="muted" style="margin-top:8px">
-          💡 Tip: Press <span class="kbd">Ctrl</span> + <span class="kbd">Enter</span> to save
-        </p>
       </div>
+    </main>
 
-      <!-- Right Column -->
-      <div class="card">
-        <div class="entries-header">
-          <h2>📚 Tonight's Dreams</h2>
-          <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input id="searchInput" type="text" placeholder="Search dreams…" />
-          </div>
+    <!-- FAB -->
+    <button class="fab" onclick="showAddDream()">+</button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="switchView('journal')">
+        <span class="nav-icon">📔</span>
+        <span>Journal</span>
+      </button>
+      <button class="nav-item" onclick="switchView('stats')">
+        <span class="nav-icon">📊</span>
+        <span>Stats</span>
+      </button>
+      <button class="nav-item" onclick="switchView('archive')">
+        <span class="nav-icon">📦</span>
+        <span>Archive</span>
+      </button>
+      <button class="nav-item" onclick="switchView('settings')">
+        <span class="nav-icon">⚙️</span>
+        <span>Settings</span>
+      </button>
+    </nav>
+
+    <!-- Add Dream Modal -->
+    <div id="addDreamModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">✨ New Dream</h2>
+          <button class="modal-close" onclick="closeModal()">×</button>
         </div>
-
-        <div class="btn-group">
-          <button id="interpretSelectedBtn" class="btn primary">🧠 Interpret Selected</button>
-          <button id="interpretAllBtn" class="btn primary">🧩 Interpret All</button>
-          <button id="clearChatBtn" class="btn">🧽 Clear Chat</button>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="dreamTitle" placeholder="Give your dream a title...">
         </div>
-        <p class="muted" style="margin-top:8px">
-          Check dreams to interpret. "Interpret All" treats them as one connected night.
-        </p>
-
-        <div id="entriesList" class="entries-list"></div>
-      </div>
-    </div>
-
-    <!-- Interpretation Chat -->
-    <div class="card" style="margin-top:20px">
-      <h2>💬 AI Dream Interpretation</h2>
-      <div class="chat-container">
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="chat-input-area">
-          <input id="chatInput" type="text" placeholder="Ask about your dreams…" />
-          <button id="sendChatBtn" class="btn primary">Send</button>
+        <div class="form-group">
+          <label>Dream Content</label>
+          <textarea id="dreamContent" placeholder="Describe your dream..."></textarea>
         </div>
+        <div class="form-group">
+          <label>Tags (comma separated)</label>
+          <input type="text" id="dreamTags" placeholder="flying, ocean, lucid...">
+        </div>
+        <button class="btn btn-success btn-block" onclick="saveDream()">💾 Save Dream</button>
       </div>
     </div>
   </div>
 
-  <!-- ============ CALENDAR TAB ============ -->
-  <div id="tab-calendar" class="tab-content">
-    <div class="card">
-      <h2>📅 Dream Calendar</h2>
-      <div class="row" style="margin-bottom:16px">
-        <button id="prevMonth" class="btn">←</button>
-        <div class="grow" style="text-align:center">
-          <h3 id="calendarMonth" style="margin:0">January 2025</h3>
-        </div>
-        <button id="nextMonth" class="btn">→</button>
-      </div>
-      <div class="calendar" id="calendarGrid"></div>
-    </div>
+  <script>
+    // State
+    let dreams = [];
+    let apiKey = '';
 
-    <div class="card" style="margin-top:20px">
-      <h2>📜 Selected Night Details</h2>
-      <div id="selectedNightDetails">
-        <div class="empty-state">
-          <div class="empty-state-icon">🌙</div>
-          <h3>No night selected</h3>
-          <p>Click on a day in the calendar to view dreams from that night</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ STATISTICS TAB ============ -->
-  <div id="tab-stats" class="tab-content">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value" id="statTotal">0</div>
-        <div class="stat-label">Total Dreams</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="statNights">0</div>
-        <div class="stat-label">Nights Recorded</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="statAvg">0</div>
-        <div class="stat-label">Avg per Night</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="statStreak">0</div>
-        <div class="stat-label">Day Streak</div>
-      </div>
-    </div>
-
-    <div class="grid" style="margin-top:20px">
-      <div class="card">
-        <h2>😊 Mood Distribution</h2>
-        <div id="moodChart" class="chart"></div>
-      </div>
-
-      <div class="card">
-        <h2>🏷️ Common Tags</h2>
-        <div id="tagsChart" class="chart"></div>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:20px">
-      <h2>📈 Dreams Over Time</h2>
-      <div id="timeChart" class="chart">
-        <div class="bar-chart" id="barChart"></div>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:20px">
-      <h2>🔍 Pattern Analysis</h2>
-      <div id="patternAnalysis">
-        <p class="muted">Pattern analysis will appear here once you have 10+ dreams recorded.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ ARCHIVE TAB ============ -->
-  <div id="tab-archive" class="tab-content">
-    <div class="card">
-      <h2>📦 Dream Archive</h2>
-      <p class="muted">Archived dreams are preserved forever and never lost. They won't appear in stats or searches, but can be restored anytime.</p>
-      
-      <div class="row" style="margin:16px 0">
-        <div class="search-box grow">
-          <span class="search-icon">🔍</span>
-          <input id="archiveSearchInput" type="text" placeholder="Search archived dreams…" />
-        </div>
-        <button id="exportArchiveBtn" class="btn">📥 Export Archive</button>
-      </div>
-
-      <div class="stats-grid" style="margin-bottom:20px">
-        <div class="stat-card">
-          <div class="stat-value" id="archiveCount">0</div>
-          <div class="stat-label">Archived Dreams</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value" id="archiveOldest">—</div>
-          <div class="stat-label">Oldest Dream</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value" id="archiveNewest">—</div>
-          <div class="stat-label">Newest Dream</div>
-        </div>
-      </div>
-
-      <div id="archiveList" class="entries-list"></div>
-    </div>
-  </div>
-
-  <!-- ============ SYMBOLS TAB ============ -->
-  <div id="tab-symbols" class="tab-content">
-    <div class="card">
-      <h2>🔮 Common Dream Symbols</h2>
-      <p class="muted">Click on a symbol to learn more about its common interpretations</p>
-      <div class="symbol-list" id="symbolList"></div>
-    </div>
-  </div>
-
-  <!-- ============ LUCID DREAMING TAB ============ -->
-  <div id="tab-lucid" class="tab-content">
-    <div class="grid">
-      <div class="card lucid-card">
-        <h2>🌟 Reality Checks</h2>
-        <p class="muted">Practice these throughout the day to increase lucid dreaming</p>
-        <div style="margin-top:16px">
-          <div class="reality-check">👁️ Look at your hands - count your fingers</div>
-          <div class="reality-check">🕐 Check a clock twice - does the time make sense?</div>
-          <div class="reality-check">📖 Read text twice - does it stay the same?</div>
-          <div class="reality-check">👃 Try to breathe through pinched nose</div>
-          <div class="reality-check">💡 Ask yourself: "Am I dreaming right now?"</div>
-        </div>
-        <button id="realityCheckReminder" class="btn primary" style="margin-top:16px">
-          ⏰ Set Reality Check Reminder
-        </button>
-      </div>
-
-      <div class="card">
-        <h2>📝 Dream Signs</h2>
-        <p class="muted">Recurring elements that indicate you're dreaming</p>
-        <div id="dreamSignsList" style="margin-top:16px"></div>
-        <button id="analyzeDreamSigns" class="btn primary" style="margin-top:16px">
-          🔍 Analyze My Dream Signs
-        </button>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:20px">
-      <h2>💡 Lucid Dreaming Techniques</h2>
-      <div class="grid triple" style="margin-top:16px">
-        <div class="symbol-card">
-          <div class="symbol-icon">🛏️</div>
-          <div class="symbol-name">MILD</div>
-          <div class="symbol-meaning">Mnemonic Induction - Set intention before sleep: "I will remember I'm dreaming"</div>
-        </div>
-        <div class="symbol-card">
-          <div class="symbol-icon">⏰</div>
-          <div class="symbol-name">WBTB</div>
-          <div class="symbol-meaning">Wake Back to Bed - Wake after 5-6 hours, stay awake 20-30 min, return to sleep</div>
-        </div>
-        <div class="symbol-card">
-          <div class="symbol-icon">🎯</div>
-          <div class="symbol-name">SSILD</div>
-          <div class="symbol-meaning">Senses Initiated - Cycle through sight, sound, and body sensations before sleep</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ SETTINGS TAB ============ -->
-  <div id="tab-settings" class="tab-content">
-    <div class="grid">
-      <div class="card">
-        <h2>🤖 AI Configuration</h2>
-        
-        <div style="margin-bottom:16px">
-          <label for="apiKey">API Key (stored locally)</label>
-          <input id="apiKey" type="password" placeholder="sk-... or leave blank for proxy" />
-          <p class="muted small" style="margin-top:4px">
-            Get your key from <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent)">platform.openai.com/api-keys</a>
-          </p>
-        </div>
-
-        <div style="margin-bottom:16px">
-          <label for="apiBase">API Endpoint</label>
-          <input id="apiBase" type="text" value="https://api.openai.com/v1/chat/completions" />
-          <p class="muted small" style="margin-top:4px">
-            Leave as default for OpenAI, or use your proxy URL
-          </p>
-        </div>
-
-        <div style="margin-bottom:16px">
-          <label for="model">Model</label>
-          <select id="model">
-            <option value="gpt-4o-mini">GPT-4o Mini (Recommended)</option>
-            <option value="gpt-4o">GPT-4o</option>
-            <option value="gpt-4-turbo">GPT-4 Turbo</option>
-            <option value="claude-3-5-sonnet-20241022">Claude 3.5 Sonnet</option>
-          </select>
-        </div>
-
-        <div class="btn-group">
-          <button id="saveSettingsBtn" class="btn good">💾 Save Settings</button>
-          <button id="testConnectionBtn" class="btn primary">🔌 Test Connection</button>
-        </div>
-        
-        <div id="connectionTest" style="margin-top:16px; display:none">
-          <div style="padding:12px; background:rgba(0,0,0,.3); border-radius:12px; border:1px solid var(--border)">
-            <div id="testResult"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>⚙️ Preferences</h2>
-        
-        <div style="margin-bottom:16px">
-          <label for="voiceLang">Voice Recognition Language</label>
-          <select id="voiceLang">
-            <option value="en-US">English (US)</option>
-            <option value="en-GB">English (UK)</option>
-            <option value="es-ES">Spanish</option>
-            <option value="fr-FR">French</option>
-            <option value="de-DE">German</option>
-            <option value="it-IT">Italian</option>
-            <option value="ja-JP">Japanese</option>
-            <option value="ko-KR">Korean</option>
-            <option value="zh-CN">Chinese (Simplified)</option>
-          </select>
-        </div>
-
-        <div style="margin-bottom:16px">
-          <label>
-            <input type="checkbox" id="autoSave" checked />
-            Auto-save drafts while typing
-          </label>
-        </div>
-
-        <div style="margin-bottom:16px">
-          <label>
-            <input type="checkbox" id="markdownSupport" />
-            Enable Markdown in entries
-          </label>
-        </div>
-
-        <button id="savePrefsBtn" class="btn good">💾 Save Preferences</button>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:20px">
-      <h2>💾 Data Management</h2>
-      
-      <div class="btn-group">
-        <button id="exportJSONBtn" class="btn">📦 Export JSON</button>
-        <button id="exportMarkdownBtn" class="btn">📝 Export Markdown</button>
-        <button id="importBtn" class="btn">📥 Import Data</button>
-        <input type="file" id="importFile" accept=".json" style="display:none" />
-      </div>
-
-      <div class="hr"></div>
-
-      <div class="btn-group">
-        <button id="wipeAllBtn" class="btn bad">🗑️ Delete All Data</button>
-      </div>
-      <p class="muted" style="margin-top:8px">
-        ⚠️ Warning: This will permanently delete all your dream entries, settings, and chat history from this browser.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Share Modal -->
-<div id="shareModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2>🔗 Share Dream</h2>
-      <button class="close-modal">&times;</button>
-    </div>
-    <div id="shareContent"></div>
-    <div class="btn-group" style="margin-top:16px">
-      <button id="copyShareLink" class="btn primary">📋 Copy Link</button>
-      <button id="downloadShareImage" class="btn">🖼️ Download as Image</button>
-    </div>
-  </div>
-</div>
-
-<!-- Edit Modal -->
-<div id="editModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2>✏️ Edit Dream</h2>
-      <button class="close-modal">&times;</button>
-    </div>
-    <div>
-      <label>Title</label>
-      <input id="editTitle" type="text" />
-    </div>
-    <div style="margin-top:16px">
-      <label>Content</label>
-      <textarea id="editText"></textarea>
-    </div>
-    <div style="margin-top:16px">
-      <label>Mood</label>
-      <select id="editMood">
-        <option value="">No mood</option>
-        <option>😰 Nervous</option>
-        <option>😌 Calm</option>
-        <option>😢 Sad</option>
-        <option>😠 Angry</option>
-        <option>😕 Confused</option>
-        <option>😊 Relieved</option>
-        <option>🤩 Excited</option>
-        <option>😶 Empty</option>
-        <option>😵 Overwhelmed</option>
-        <option>😱 Terrified</option>
-        <option>🥰 Loving</option>
-        <option>😎 Confident</option>
-      </select>
-    </div>
-    <div style="margin-top:16px">
-      <label>Tags</label>
-      <div class="tag-input-container" id="editTagContainer">
-        <input type="text" class="tag-input" id="editTagInput" placeholder="Type and press Enter…" />
-      </div>
-    </div>
-    <div class="btn-group" style="margin-top:20px">
-      <button id="saveEditBtn" class="btn good">✅ Save Changes</button>
-      <button class="close-modal btn">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<!-- Toast -->
-<div id="toast" class="toast"></div>
-
-<script>
-// ========================================
-// STATE & CONSTANTS
-// ========================================
-const $ = id => document.getElementById(id);
-const KEYS = {
-  settings: 'dj_settings_v2',
-  nights: 'dj_nights_v2',
-  activeNightId: 'dj_active_night_v2',
-  chat: 'dj_chat_v2',
-  prefs: 'dj_prefs_v2',
-  archive: 'dj_archive_v2'
-};
-
-const state = {
-  persistence: 'memory',
-  settings: { apiKey:'', apiBase:'https://api.openai.com/v1/chat/completions', model:'gpt-4o-mini' },
-  prefs: { voiceLang:'en-US', autoSave:true, markdownSupport:false },
-  nights: {},
-  activeNightId: null,
-  chat: [],
-  recognition: null,
-  recognizing: false,
-  currentEditId: null,
-  autoSaveTimer: null,
-  calendarDate: new Date(),
-  tags: new Set(),
-  archive: [] // Archived dreams
-};
-
-// Common dream symbols
-const SYMBOLS = [
-  { icon:'💧', name:'Water', meaning:'Emotions, unconscious mind, flow of life', keywords:['water', 'rain', 'wet', 'puddle', 'drip', 'splash', 'pour', 'flood', 'stream', 'river', 'lake', 'pool'] },
-  { icon:'🕊️', name:'Flying', meaning:'Freedom, escape, ambition, perspective', keywords:['fly', 'flying', 'flew', 'float', 'soar', 'soaring', 'hover', 'levitate', 'airborne', 'glide', 'wings'] },
-  { icon:'🏃', name:'Running', meaning:'Avoiding something, urgency, goals', keywords:['run', 'running', 'ran', 'sprint', 'chase', 'chasing', 'chased', 'flee', 'escape', 'racing'] },
-  { icon:'🏠', name:'House', meaning:'Self, different aspects of personality', keywords:['house', 'home', 'room', 'rooms', 'bedroom', 'kitchen', 'basement', 'attic', 'apartment', 'building'] },
-  { icon:'🚪', name:'Door', meaning:'Opportunity, transition, new phase', keywords:['door', 'doors', 'doorway', 'entrance', 'exit', 'threshold', 'gateway', 'portal'] },
-  { icon:'🐍', name:'Snake', meaning:'Transformation, hidden fears, healing', keywords:['snake', 'snakes', 'serpent', 'reptile', 'slither', 'viper', 'python', 'cobra'] },
-  { icon:'🌊', name:'Ocean', meaning:'Vast emotions, unconscious, mystery', keywords:['ocean', 'sea', 'beach', 'shore', 'waves', 'tide', 'surf', 'coast', 'seashore'] },
-  { icon:'🔥', name:'Fire', meaning:'Passion, destruction, transformation', keywords:['fire', 'flame', 'flames', 'burning', 'burn', 'burnt', 'blaze', 'inferno', 'smoke', 'ash'] },
-  { icon:'👶', name:'Baby', meaning:'New beginnings, vulnerability, potential', keywords:['baby', 'infant', 'newborn', 'child', 'pregnancy', 'pregnant', 'birth'] },
-  { icon:'💀', name:'Death', meaning:'Endings, transformation, change', keywords:['death', 'dead', 'die', 'dying', 'died', 'funeral', 'grave', 'cemetery', 'corpse', 'ghost'] },
-  { icon:'🦅', name:'Birds', meaning:'Freedom, spirituality, messages', keywords:['bird', 'birds', 'eagle', 'crow', 'raven', 'dove', 'owl', 'hawk', 'feather', 'nest', 'flock'] },
-  { icon:'🕷️', name:'Spiders', meaning:'Creativity, patience, feeling trapped', keywords:['spider', 'spiders', 'web', 'cobweb', 'tarantula', 'arachnid'] },
-  { icon:'🚗', name:'Vehicle', meaning:'Life journey, control, direction', keywords:['car', 'vehicle', 'drive', 'driving', 'drove', 'bus', 'train', 'truck', 'automobile'] },
-  { icon:'📚', name:'School', meaning:'Learning, anxiety, unpreparedness', keywords:['school', 'class', 'classroom', 'teacher', 'test', 'exam', 'homework', 'student', 'grade', 'college', 'university'] },
-  { icon:'👥', name:'People', meaning:'Aspects of self, relationships', keywords:['people', 'person', 'crowd', 'stranger', 'family', 'friend', 'someone', 'everyone'] },
-  { icon:'🌙', name:'Moon', meaning:'Feminine energy, cycles, intuition', keywords:['moon', 'lunar', 'moonlight', 'crescent', 'full moon'] },
-  { icon:'☀️', name:'Sun', meaning:'Consciousness, energy, optimism', keywords:['sun', 'sunny', 'sunshine', 'sunlight', 'sunset', 'sunrise', 'dawn', 'dusk'] },
-  { icon:'🌳', name:'Trees', meaning:'Growth, stability, life force', keywords:['tree', 'trees', 'forest', 'woods', 'branch', 'branches', 'trunk', 'bark', 'leaves', 'oak', 'pine'] },
-  { icon:'⚡', name:'Lightning', meaning:'Sudden change, revelation, power', keywords:['lightning', 'thunder', 'storm', 'thunderstorm', 'bolt', 'electric', 'electricity'] },
-  { icon:'🔮', name:'Crystals', meaning:'Clarity, healing, spiritual growth', keywords:['crystal', 'crystals', 'gem', 'gems', 'stone', 'stones', 'jewel', 'quartz'] }
-];
-
-// ========================================
-// PERSISTENCE
-// ========================================
-async function detectPersistence(){
-  try{
-    if(typeof indexedDB !== 'undefined'){
-      const testKey = '__idb_test__';
-      await storeSet(testKey, '1');
-      await storeDel(testKey);
-      state.persistence = 'idb';
-      updateSavePill('ok', '💾 IndexedDB');
-      return;
+    // Initialize
+    function init() {
+      loadData();
+      renderDreams();
     }
-  }catch(e){}
-  
-  try{
-    localStorage.setItem('__ls_test__', '1');
-    localStorage.removeItem('__ls_test__');
-    state.persistence = 'ls';
-    updateSavePill('ok', '💾 LocalStorage');
-    return;
-  }catch(e){}
-  
-  state.persistence = 'memory';
-  updateSavePill('warn', '⚠️ Memory Only');
-}
 
-let db;
-async function getDB(){
-  if(db) return db;
-  return new Promise((resolve, reject)=>{
-    const req = indexedDB.open('DreamJournalDB', 1);
-    req.onerror = ()=> reject(req.error);
-    req.onsuccess = ()=>{ db = req.result; resolve(db); };
-    req.onupgradeneeded = (evt)=>{
-      const d = evt.target.result;
-      if(!d.objectStoreNames.contains('kv')){
-        d.createObjectStore('kv', {keyPath:'key'});
-      }
-    };
-  });
-}
-
-async function storeSet(key, val){
-  const d = await getDB();
-  return new Promise((resolve, reject)=>{
-    const tx = d.transaction(['kv'], 'readwrite');
-    const store = tx.objectStore('kv');
-    const req = store.put({key, value:val});
-    req.onsuccess = ()=> resolve();
-    req.onerror = ()=> reject(req.error);
-  });
-}
-
-async function storeGet(key){
-  const d = await getDB();
-  return new Promise((resolve)=>{
-    const tx = d.transaction(['kv'], 'readonly');
-    const store = tx.objectStore('kv');
-    const req = store.get(key);
-    req.onsuccess = ()=> resolve(req.result ? req.result.value : null);
-    req.onerror = ()=> resolve(null);
-  });
-}
-
-async function storeDel(key){
-  const d = await getDB();
-  return new Promise((resolve)=>{
-    const tx = d.transaction(['kv'], 'readwrite');
-    const store = tx.objectStore('kv');
-    store.delete(key);
-    tx.oncomplete = ()=> resolve();
-    tx.onerror = ()=> resolve();
-  });
-}
-
-function lsSet(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
-function lsGet(key){ try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; }catch(e){ return null; } }
-function lsDel(key){ try{ localStorage.removeItem(key); }catch(e){} }
-
-async function saveAll(){
-  const saveData = async (key, data) => {
-    if(state.persistence === 'idb') await storeSet(key, data);
-    else if(state.persistence === 'ls') lsSet(key, data);
-  };
-  
-  await saveData(KEYS.settings, state.settings);
-  await saveData(KEYS.prefs, state.prefs);
-  await saveData(KEYS.nights, state.nights);
-  await saveData(KEYS.activeNightId, state.activeNightId);
-  await saveData(KEYS.chat, state.chat);
-  await saveData(KEYS.archive, state.archive);
-}
-
-async function loadAll(){
-  const loadData = async (key) => {
-    if(state.persistence === 'idb') return await storeGet(key);
-    else if(state.persistence === 'ls') return lsGet(key);
-    return null;
-  };
-  
-  const settings = await loadData(KEYS.settings);
-  if(settings) state.settings = settings;
-  
-  const prefs = await loadData(KEYS.prefs);
-  if(prefs) state.prefs = prefs;
-  
-  const nights = await loadData(KEYS.nights);
-  if(nights) state.nights = nights;
-  
-  const activeId = await loadData(KEYS.activeNightId);
-  if(activeId && state.nights[activeId]) state.activeNightId = activeId;
-  
-  const chat = await loadData(KEYS.chat);
-  if(Array.isArray(chat)) state.chat = chat;
-  
-  const archive = await loadData(KEYS.archive);
-  if(Array.isArray(archive)) state.archive = archive;
-  
-  if(!state.activeNightId || !state.nights[state.activeNightId]){
-    await createNewNight(false);
-  }
-  
-  // Extract all tags
-  Object.values(state.nights).forEach(night => {
-    night.entries.forEach(entry => {
-      if(entry.tags) entry.tags.forEach(tag => state.tags.add(tag));
-    });
-  });
-  
-  // Extract tags from archive too
-  state.archive.forEach(entry => {
-    if(entry.tags) entry.tags.forEach(tag => state.tags.add(tag));
-  });
-}
-
-// ========================================
-// UTILITIES
-// ========================================
-function nowISO(){ return new Date().toISOString(); }
-function dateKey(date){ return date.toISOString().split('T')[0]; }
-function formatDate(iso){
-  const d = new Date(iso);
-  return d.toLocaleString('en-US', {
-    month:'short', day:'numeric', year:'numeric',
-    hour:'numeric', minute:'2-digit', hour12:true
-  });
-}
-
-function toast(msg){
-  const el = $('toast');
-  el.textContent = msg;
-  el.style.opacity = '1';
-  el.style.pointerEvents = 'auto';
-  setTimeout(()=>{
-    el.style.opacity = '0';
-    el.style.pointerEvents = 'none';
-  }, 3000);
-}
-
-function updateSavePill(type, text){
-  const pill = $('savePill');
-  pill.className = `pill ${type}`;
-  pill.textContent = text;
-}
-
-function updateApiPill(){
-  const pill = $('apiPill');
-  if(state.settings.apiKey || state.settings.apiBase !== 'https://api.openai.com/v1/chat/completions'){
-    pill.className = 'pill ok';
-    pill.textContent = '🤖 API Ready';
-  } else {
-    pill.className = 'pill warn';
-    pill.textContent = '🤖 API Not Set';
-  }
-}
-
-function confirmDelete(message){
-  return confirm(message);
-}
-
-// ========================================
-// NIGHT & ENTRY MANAGEMENT
-// ========================================
-async function createNewNight(notify=true){
-  const id = 'night_' + Date.now();
-  const today = dateKey(new Date());
-  state.nights[id] = {
-    id,
-    date: today,
-    created: nowISO(),
-    entries: []
-  };
-  state.activeNightId = id;
-  await saveAll();
-  renderEntries();
-  if(notify) toast('🌙 New night started');
-}
-
-function getActiveNight(){
-  return state.nights[state.activeNightId];
-}
-
-async function addEntry(){
-  const title = $('title').value.trim();
-  const text = $('dreamText').value.trim();
-  const mood = $('mood').value;
-  const imageFile = $('imageUpload').files[0];
-  
-  if(!text){
-    toast('⚠️ Dream content is required');
-    return;
-  }
-  
-  const entry = {
-    id: 'entry_' + Date.now(),
-    title: title || 'Untitled Dream',
-    text,
-    mood,
-    tags: Array.from($('tagContainer').querySelectorAll('.tag-chip')).map(chip => chip.dataset.tag),
-    timestamp: nowISO(),
-    selected: true
-  };
-  
-  if(imageFile){
-    const reader = new FileReader();
-    reader.onload = async ()=>{
-      entry.image = reader.result;
-      await saveEntry(entry);
-    };
-    reader.readAsDataURL(imageFile);
-  } else {
-    await saveEntry(entry);
-  }
-}
-
-async function saveEntry(entry){
-  const night = getActiveNight();
-  night.entries.push(entry);
-  
-  // Add tags to global set
-  entry.tags.forEach(tag => state.tags.add(tag));
-  
-  await saveAll();
-  
-  // Clear form
-  $('title').value = '';
-  $('dreamText').value = '';
-  $('mood').value = '';
-  $('imageUpload').value = '';
-  $('tagContainer').querySelectorAll('.tag-chip').forEach(chip => chip.remove());
-  updateCharCount();
-  
-  renderEntries();
-  toast('✅ Dream saved');
-}
-
-async function deleteEntry(entryId){
-  if(!confirmDelete('Delete this dream entry?')) return;
-  
-  const night = getActiveNight();
-  night.entries = night.entries.filter(e => e.id !== entryId);
-  await saveAll();
-  renderEntries();
-  toast('🗑️ Entry deleted');
-}
-
-async function archiveEntry(entryId){
-  if(!confirm('Archive this dream? It will be preserved forever but removed from active dreams.')) return;
-  
-  const night = getActiveNight();
-  const entry = night.entries.find(e => e.id === entryId);
-  if(!entry) return;
-  
-  // Add to archive with metadata
-  const archivedEntry = {
-    ...entry,
-    archivedAt: nowISO(),
-    originalNightId: state.activeNightId,
-    originalNightDate: night.date
-  };
-  
-  state.archive.push(archivedEntry);
-  
-  // Remove from active night
-  night.entries = night.entries.filter(e => e.id !== entryId);
-  
-  await saveAll();
-  renderEntries();
-  toast('📦 Dream archived');
-}
-
-async function restoreEntry(entryId){
-  if(!confirm('Restore this dream to active dreams?')) return;
-  
-  const archivedIndex = state.archive.findIndex(e => e.id === entryId);
-  if(archivedIndex === -1) return;
-  
-  const entry = state.archive[archivedIndex];
-  
-  // Find or create the original night
-  let night = state.nights[entry.originalNightId];
-  if(!night){
-    // If original night doesn't exist, add to current night
-    night = getActiveNight();
-  }
-  
-  // Remove archive metadata
-  const restoredEntry = {
-    id: entry.id,
-    title: entry.title,
-    text: entry.text,
-    mood: entry.mood,
-    tags: entry.tags,
-    timestamp: entry.timestamp,
-    selected: true,
-    image: entry.image
-  };
-  
-  night.entries.push(restoredEntry);
-  
-  // Remove from archive
-  state.archive.splice(archivedIndex, 1);
-  
-  await saveAll();
-  renderArchive();
-  toast('✅ Dream restored');
-}
-
-async function deleteArchivedEntry(entryId){
-  if(!confirmDelete('Permanently delete this archived dream? This cannot be undone!')) return;
-  
-  state.archive = state.archive.filter(e => e.id !== entryId);
-  await saveAll();
-  renderArchive();
-  toast('🗑️ Archived dream deleted');
-}
-
-function toggleEntrySelection(entryId){
-  const night = getActiveNight();
-  const entry = night.entries.find(e => e.id === entryId);
-  if(entry) entry.selected = !entry.selected;
-  renderEntries();
-}
-
-async function openEditModal(entryId){
-  const night = getActiveNight();
-  const entry = night.entries.find(e => e.id === entryId);
-  if(!entry) return;
-  
-  state.currentEditId = entryId;
-  $('editTitle').value = entry.title;
-  $('editText').value = entry.text;
-  $('editMood').value = entry.mood || '';
-  
-  // Set up tags
-  const container = $('editTagContainer');
-  container.querySelectorAll('.tag-chip').forEach(chip => chip.remove());
-  if(entry.tags){
-    entry.tags.forEach(tag => {
-      const chip = createTagChip(tag, container);
-      container.insertBefore(chip, $('editTagInput'));
-    });
-  }
-  
-  $('editModal').classList.add('active');
-}
-
-async function saveEdit(){
-  if(!state.currentEditId) return;
-  
-  const night = getActiveNight();
-  const entry = night.entries.find(e => e.id === state.currentEditId);
-  if(!entry) return;
-  
-  entry.title = $('editTitle').value.trim() || 'Untitled Dream';
-  entry.text = $('editText').value.trim();
-  entry.mood = $('editMood').value;
-  entry.tags = Array.from($('editTagContainer').querySelectorAll('.tag-chip')).map(chip => chip.dataset.tag);
-  
-  // Update global tags
-  entry.tags.forEach(tag => state.tags.add(tag));
-  
-  await saveAll();
-  $('editModal').classList.remove('active');
-  renderEntries();
-  toast('✅ Changes saved');
-}
-
-function renderEntries(){
-  const night = getActiveNight();
-  const list = $('entriesList');
-  const searchTerm = $('searchInput').value.toLowerCase();
-  
-  if(!night || night.entries.length === 0){
-    list.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">💤</div>
-        <h3>No dreams yet tonight</h3>
-        <p>Capture your first dream to get started</p>
-      </div>
-    `;
-    return;
-  }
-  
-  const filtered = searchTerm 
-    ? night.entries.filter(e => 
-        e.title.toLowerCase().includes(searchTerm) ||
-        e.text.toLowerCase().includes(searchTerm) ||
-        (e.tags && e.tags.some(t => t.toLowerCase().includes(searchTerm)))
-      )
-    : night.entries;
-  
-  if(filtered.length === 0){
-    list.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">🔍</div>
-        <h3>No matches found</h3>
-        <p>Try a different search term</p>
-      </div>
-    `;
-    return;
-  }
-  
-  list.innerHTML = filtered.map(entry => `
-    <div class="entry" data-id="${entry.id}">
-      <div class="entry-top">
-        <input type="checkbox" ${entry.selected ? 'checked' : ''} 
-          onchange="toggleEntrySelection('${entry.id}')" />
-        <div class="grow">
-          <div class="entry-title">${escapeHtml(entry.title)}</div>
-          <div class="entry-meta">
-            <span>🕐 ${formatDate(entry.timestamp)}</span>
-            ${entry.mood ? `<span>${entry.mood}</span>` : ''}
-          </div>
-        </div>
-      </div>
-      ${entry.tags && entry.tags.length > 0 ? `
-        <div class="entry-tags">
-          ${entry.tags.map(tag => `<span class="tag">${renderTagWithIcon(tag)}</span>`).join('')}
-        </div>
-      ` : ''}
-      <div class="entry-text">${escapeHtml(entry.text)}</div>
-      ${entry.image ? `<img src="${entry.image}" class="entry-image" alt="Dream sketch" />` : ''}
-      <div class="entry-actions">
-        <button class="mini-btn" onclick="openEditModal('${entry.id}')">✏️ Edit</button>
-        <button class="mini-btn" onclick="archiveEntry('${entry.id}')">📦 Archive</button>
-        <button class="mini-btn" onclick="deleteEntry('${entry.id}')">🗑️ Delete</button>
-        <button class="mini-btn" onclick="shareEntry('${entry.id}')">🔗 Share</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function escapeHtml(text){
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-function getSymbolIcon(tagName){
-  const symbol = SYMBOLS.find(s => s.name.toLowerCase() === tagName.toLowerCase());
-  return symbol ? symbol.icon : '';
-}
-
-function renderTagWithIcon(tag){
-  const icon = getSymbolIcon(tag);
-  return icon ? `${icon} ${escapeHtml(tag)}` : escapeHtml(tag);
-}
-
-// ========================================
-// AUTO-DETECTION OF SYMBOLS/TAGS
-// ========================================
-function detectSymbolsInText(text){
-  if(!text) return [];
-  
-  const lowerText = text.toLowerCase();
-  const detectedSymbols = [];
-  
-  SYMBOLS.forEach(symbol => {
-    // Check if any keyword matches in the text
-    const found = symbol.keywords.some(keyword => {
-      // Use word boundaries to avoid false matches
-      const regex = new RegExp(`\\b${keyword}\\w*\\b`, 'i');
-      return regex.test(lowerText);
-    });
-    
-    if(found && !detectedSymbols.includes(symbol.name.toLowerCase())){
-      detectedSymbols.push(symbol.name.toLowerCase());
-    }
-  });
-  
-  return detectedSymbols;
-}
-
-function autoPopulateTags(text, containerId){
-  const detectedTags = detectSymbolsInText(text);
-  const container = $(containerId);
-  const existingTags = Array.from(container.querySelectorAll('.tag-chip')).map(chip => chip.dataset.tag);
-  
-  // Add detected tags that don't already exist
-  detectedTags.forEach(tag => {
-    if(!existingTags.includes(tag)){
-      const chip = createTagChip(tag, container);
-      const input = container.querySelector('.tag-input');
-      container.insertBefore(chip, input);
-    }
-  });
-  
-  updateTagSuggestions();
-  
-  // Show notification if tags were added
-  if(detectedTags.length > 0){
-    const newTags = detectedTags.filter(t => !existingTags.includes(t));
-    if(newTags.length > 0){
-      toast(`✨ Auto-detected: ${newTags.join(', ')}`);
-    }
-  }
-}
-
-// ========================================
-// TAG SYSTEM
-// ========================================
-function setupTagInput(containerId, inputId){
-  const container = $(containerId);
-  const input = $(inputId);
-  
-  input.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter' && input.value.trim()){
-      e.preventDefault();
-      const tag = input.value.trim().toLowerCase();
-      if(!Array.from(container.querySelectorAll('.tag-chip')).some(chip => chip.dataset.tag === tag)){
-        const chip = createTagChip(tag, container);
-        container.insertBefore(chip, input);
-        input.value = '';
-        updateTagSuggestions();
+    // Load data from localStorage
+    function loadData() {
+      const saved = localStorage.getItem('dreamsData');
+      if (saved) {
+        const data = JSON.parse(saved);
+        dreams = data.dreams || [];
+        apiKey = data.apiKey || '';
       }
     }
-  });
-  
-  input.addEventListener('input', updateTagSuggestions);
-}
 
-function createTagChip(tag, container){
-  const chip = document.createElement('div');
-  chip.className = 'tag-chip';
-  chip.dataset.tag = tag;
-  chip.innerHTML = `
-    ${escapeHtml(tag)}
-    <button type="button">&times;</button>
-  `;
-  chip.querySelector('button').addEventListener('click', () => {
-    chip.remove();
-    updateTagSuggestions();
-  });
-  return chip;
-}
+    // Save data to localStorage
+    function saveData() {
+      localStorage.setItem('dreamsData', JSON.stringify({ dreams, apiKey }));
+    }
 
-function updateTagSuggestions(){
-  const input = $('tagInput').value.toLowerCase();
-  const existingTags = Array.from($('tagContainer').querySelectorAll('.tag-chip')).map(c => c.dataset.tag);
-  
-  const suggestions = Array.from(state.tags)
-    .filter(tag => 
-      !existingTags.includes(tag) && 
-      (!input || tag.includes(input))
-    )
-    .slice(0, 10);
-  
-  const container = $('tagSuggestions');
-  container.innerHTML = suggestions.map(tag => 
-    `<button class="tag-suggestion" onclick="addSuggestedTag('${tag}')">${escapeHtml(tag)}</button>`
-  ).join('');
-}
-
-function addSuggestedTag(tag){
-  const container = $('tagContainer');
-  const input = $('tagInput');
-  if(!Array.from(container.querySelectorAll('.tag-chip')).some(chip => chip.dataset.tag === tag)){
-    const chip = createTagChip(tag, container);
-    container.insertBefore(chip, input);
-    input.value = '';
-    updateTagSuggestions();
-  }
-}
-
-// ========================================
-// AI INTERPRETATION
-// ========================================
-async function interpret(mode){
-  const night = getActiveNight();
-  const entries = mode === 'all' 
-    ? night.entries 
-    : night.entries.filter(e => e.selected);
-  
-  if(entries.length === 0){
-    toast('⚠️ No dreams selected');
-    return;
-  }
-  
-  const systemPrompt = `You are a warm, insightful friend having a natural conversation about dreams. DO NOT use any formatting whatsoever.
-
-CRITICAL RULES - NEVER BREAK THESE:
-- NO bold text (**like this**), NO italics, NO headers of any kind
-- NO sections or structured responses  
-- NO phrases like "The Symbolism of X:" or "Personal Reflection:" or "What This Means:"
-- NO bullet points or numbered lists
-- NO markdown formatting at all
-- DO NOT ask multiple questions in a row - pick ONE thing to wonder about
-- Write in pure, flowing paragraphs like you're texting or talking
-
-BANNED PHRASES (never use these):
-- "The symbolism of..."
-- "This could represent..."
-- "Personal reflection:"
-- "What stood out to me is..."
-- "I'm really interested in hearing..."
-- Any phrase that sounds like a section header
-
-Your voice:
-You're thoughtful and know about psychology, but you talk like a real person, not a textbook. You notice one specific thing and follow that thread. You wonder aloud. You might ask a question but don't interrogate. Sometimes you just share an observation and let it sit.
-
-Example of WRONG (too structured, uses headers and formatting):
-"**The Symbolism of Flying:** Flying often represents freedom. **The City Below:** Cities represent responsibilities. **Personal Reflection:** What might this mean for you?"
-
-Example of RIGHT (natural, conversational, no structure):
-"Flying over a city... there's something about being up there above everything, you know? I'm wondering if the city felt familiar or more like somewhere you'd never been. Sometimes when we dream of flying it's about wanting distance from something, and sometimes it's more about seeing things from a new angle."
-
-Keep responses 2-3 short paragraphs max. Just talk naturally.`;
-  
-  const dreamContent = entries.map((e, i) => 
-    `Dream ${i+1} - "${e.title}"${e.mood ? ` (Mood: ${e.mood})` : ''}${e.tags && e.tags.length ? ` [Tags: ${e.tags.join(', ')}]` : ''}:
-${e.text}`
-  ).join('\n\n---\n\n');
-  
-  const userPrompt = mode === 'all'
-    ? `I had ${entries.length} dreams last night that feel connected somehow. I'd love to hear your thoughts on what might be going on:\n\n${dreamContent}`
-    : `I'd like to talk about ${entries.length === 1 ? 'this dream' : 'these dreams'}:\n\n${dreamContent}`;
-  
-  await pushChat('user', userPrompt);
-  
-  const sendBtn = $('sendChatBtn');
-  const wasDisabled = sendBtn.disabled;
-  sendBtn.disabled = true;
-  sendBtn.classList.add('loading');
-  
-  try{
-    // Add system prompt to conversation
-    const messages = [
-      { role: 'system', content: systemPrompt },
-      ...state.chat.map(msg => ({ role: msg.role, content: msg.content }))
-    ];
-    
-    const reply = await callOpenAI(messages);
-    await pushChat('assistant', reply);
-  }catch(err){
-    await pushChat('assistant', err.message || String(err));
-  }finally{
-    sendBtn.disabled = wasDisabled;
-    sendBtn.classList.remove('loading');
-  }
-}
-
-async function callOpenAI(messages){
-  if(!state.settings.apiKey && state.settings.apiBase === 'https://api.openai.com/v1/chat/completions'){
-    throw new Error('Please configure your API key in Settings → click ⚙️ Settings tab');
-  }
-  
-  const headers = { 'Content-Type': 'application/json' };
-  if(state.settings.apiKey) headers['Authorization'] = `Bearer ${state.settings.apiKey}`;
-  
-  const body = {
-    model: state.settings.model,
-    messages: typeof messages === 'string' 
-      ? [{ role: 'user', content: messages }]
-      : messages,
-    max_tokens: 1000,
-    temperature: 0.8
-  };
-  
-  try {
-    const res = await fetch(state.settings.apiBase, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(body)
-    });
-    
-    if(!res.ok){
-      const errorText = await res.text();
-      let errorMsg = `API error (${res.status})`;
+    // Switch views
+    function switchView(view) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
       
-      // Parse common errors
-      if(res.status === 401) {
-        errorMsg = '❌ Invalid API key. Check your key in Settings.';
-      } else if(res.status === 429) {
-        errorMsg = '❌ Rate limit exceeded. You may have hit your quota or need to wait.';
-      } else if(res.status === 403) {
-        errorMsg = '❌ Access forbidden. Check your API key permissions.';
-      } else if(res.status === 404) {
-        errorMsg = '❌ Endpoint not found. Check your API endpoint URL in Settings.';
-      } else {
-        try {
-          const errData = JSON.parse(errorText);
-          errorMsg += ': ' + (errData.error?.message || errorText);
-        } catch {
-          errorMsg += ': ' + errorText.substring(0, 200);
-        }
+      document.getElementById(view + 'View').classList.add('active');
+      event.currentTarget.classList.add('active');
+      
+      if (view === 'journal') renderDreams();
+      if (view === 'stats') renderStats();
+      if (view === 'archive') renderArchive();
+    }
+
+    // Show modals
+    function showAddDream() {
+      document.getElementById('addDreamModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('addDreamModal').classList.remove('active');
+      document.getElementById('dreamTitle').value = '';
+      document.getElementById('dreamContent').value = '';
+      document.getElementById('dreamTags').value = '';
+    }
+
+    function showSettings() {
+      switchView('settings');
+      document.getElementById('apiKeyInput').value = apiKey;
+    }
+
+    // Save dream
+    function saveDream() {
+      const title = document.getElementById('dreamTitle').value.trim();
+      const content = document.getElementById('dreamContent').value.trim();
+      const tagsStr = document.getElementById('dreamTags').value.trim();
+      
+      if (!content) {
+        alert('Please describe your dream');
+        return;
       }
-      throw new Error(errorMsg);
-    }
-    
-    const data = await res.json();
-    return data.choices[0].message.content;
-  } catch(err) {
-    // Network errors (CORS, connection refused, etc)
-    if(err.message.includes('Failed to fetch') || err.name === 'TypeError') {
-      throw new Error(`❌ Network error: Cannot reach ${state.settings.apiBase}
       
-Possible causes:
-• CORS policy blocking the request
-• Wrong endpoint URL
-• Browser extension blocking it
-• Network/firewall issue
-
-💡 Try:
-1. Check your endpoint URL in Settings
-2. Disable browser extensions temporarily
-3. Try a different browser
-4. Check if you need a proxy`);
+      const dream = {
+        id: Date.now().toString(),
+        title: title || 'Untitled Dream',
+        content,
+        tags: tagsStr ? tagsStr.split(',').map(t => t.trim()) : [],
+        date: new Date().toISOString(),
+        archived: false
+      };
+      
+      dreams.unshift(dream);
+      saveData();
+      closeModal();
+      renderDreams();
     }
-    throw err;
-  }
-}
 
-async function pushChat(role, content){
-  state.chat.push({ role, content, timestamp: nowISO() });
-  await saveAll();
-  renderChat();
-}
-
-function renderChat(){
-  const container = $('chatMessages');
-  
-  if(state.chat.length === 0){
-    container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">💬</div>
-        <h3>No interpretations yet</h3>
-        <p>Select dreams and click "Interpret" to start</p>
-      </div>
-    `;
-    return;
-  }
-  
-  container.innerHTML = state.chat.map(msg => 
-    `<div class="message ${msg.role}">${escapeHtml(msg.content)}</div>`
-  ).join('');
-  
-  container.scrollTop = container.scrollHeight;
-}
-
-async function sendChat(){
-  const input = $('chatInput');
-  const question = input.value.trim();
-  if(!question) return;
-  
-  input.value = '';
-  await pushChat('user', question);
-  
-  const sendBtn = $('sendChatBtn');
-  sendBtn.disabled = true;
-  sendBtn.classList.add('loading');
-  
-  try{
-    const systemPrompt = `Continue talking naturally about their dreams. NO formatting - no bold, no headers, no sections, no bullet points. Just write in plain paragraphs like you're texting a friend. Build on what's already been said. Ask follow-up questions. Wonder out loud. Keep it conversational and flowing.`;
-    const messages = [
-      { role: 'system', content: systemPrompt },
-      ...state.chat.map(msg => ({ role: msg.role, content: msg.content }))
-    ];
-    
-    const reply = await callOpenAI(messages);
-    await pushChat('assistant', reply);
-  }catch(err){
-    await pushChat('assistant', err.message || String(err));
-  }finally{
-    sendBtn.disabled = false;
-    sendBtn.classList.remove('loading');
-  }
-}
-
-async function clearChat(){
-  if(!confirmDelete('Clear the interpretation chat history?')) return;
-  state.chat = [];
-  await saveAll();
-  renderChat();
-  toast('🧽 Chat cleared');
-}
-
-// ========================================
-// VOICE RECOGNITION
-// ========================================
-function setupSpeech(){
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SpeechRecognition){
-    $('micBtn').disabled = true;
-    return;
-  }
-  
-  const rec = new SpeechRecognition();
-  rec.continuous = true;
-  rec.interimResults = true;
-  rec.lang = state.prefs.voiceLang;
-  
-  rec.onresult = (evt)=>{
-    let finalText = '';
-    let interimText = '';
-    for(let i = evt.resultIndex; i < evt.results.length; i++){
-      const transcript = evt.results[i][0].transcript;
-      if(evt.results[i].isFinal) finalText += transcript + ' ';
-      else interimText += transcript;
-    }
-    
-    const box = $('dreamText');
-    if(finalText.trim()){
-      box.value = (box.value ? box.value.trim() + '\n' : '') + finalText.trim();
-      updateCharCount();
-      if(state.prefs.autoSave) scheduleAutoSave();
-    }
-    
-    if(interimText.trim()){
-      $('interimHint').style.display = 'block';
-      $('interimText').textContent = interimText.trim();
-    } else {
-      $('interimHint').style.display = 'none';
-    }
-  };
-  
-  rec.onerror = ()=>{
-    state.recognizing = false;
-    updateMicUI();
-    toast('⚠️ Voice recognition error');
-  };
-  
-  rec.onend = ()=>{
-    state.recognizing = false;
-    updateMicUI();
-    $('interimHint').style.display = 'none';
-  };
-  
-  state.recognition = rec;
-}
-
-function toggleVoice(){
-  if(!state.recognition || $('micBtn').disabled) return;
-  
-  if(!state.recognizing){
-    try{
-      state.recognition.lang = state.prefs.voiceLang;
-      state.recognition.start();
-      state.recognizing = true;
-      updateMicUI();
-      toast('🎤 Listening...');
-    }catch(e){
-      toast('⚠️ Could not start voice recognition');
-    }
-  } else {
-    state.recognition.stop();
-    state.recognizing = false;
-    updateMicUI();
-  }
-}
-
-function updateMicUI(){
-  $('micLabel').textContent = state.recognizing ? 'Stop' : 'Voice';
-  $('micBtn').classList.toggle('primary', state.recognizing);
-}
-
-// ========================================
-// CALENDAR
-// ========================================
-function renderCalendar(){
-  const year = state.calendarDate.getFullYear();
-  const month = state.calendarDate.getMonth();
-  
-  $('calendarMonth').textContent = new Date(year, month).toLocaleString('en-US', {
-    month: 'long',
-    year: 'numeric'
-  });
-  
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  
-  const grid = $('calendarGrid');
-  grid.innerHTML = '';
-  
-  // Headers
-  ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(day => {
-    const header = document.createElement('div');
-    header.className = 'calendar-header';
-    header.textContent = day;
-    grid.appendChild(header);
-  });
-  
-  // Empty cells
-  for(let i = 0; i < firstDay; i++){
-    grid.appendChild(document.createElement('div'));
-  }
-  
-  // Days
-  for(let day = 1; day <= daysInMonth; day++){
-    const date = new Date(year, month, day);
-    const key = dateKey(date);
-    const hasNight = Object.values(state.nights).some(n => n.date === key && n.entries.length > 0);
-    
-    const cell = document.createElement('div');
-    cell.className = 'calendar-day' + (hasNight ? ' has-dreams' : '');
-    cell.textContent = day;
-    cell.onclick = () => showNightDetails(key);
-    grid.appendChild(cell);
-  }
-}
-
-function showNightDetails(dateKey){
-  const night = Object.values(state.nights).find(n => n.date === dateKey);
-  const container = $('selectedNightDetails');
-  
-  if(!night || night.entries.length === 0){
-    container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">😴</div>
-        <h3>No dreams this night</h3>
-        <p>Selected: ${dateKey}</p>
-      </div>
-    `;
-    return;
-  }
-  
-  container.innerHTML = `
-    <h3>🌙 ${dateKey}</h3>
-    <p class="muted">${night.entries.length} dream${night.entries.length > 1 ? 's' : ''} recorded</p>
-    <div class="entries-list" style="margin-top:16px">
-      ${night.entries.map(entry => `
-        <div class="entry">
-          <div class="entry-title">${escapeHtml(entry.title)}</div>
-          <div class="entry-meta">
-            ${entry.mood ? `<span>${entry.mood}</span>` : ''}
-            ${entry.tags && entry.tags.length ? `<span>🏷️ ${entry.tags.join(', ')}</span>` : ''}
+    // Render dreams
+    function renderDreams() {
+      const list = document.getElementById('dreamsList');
+      const activeDreams = dreams.filter(d => !d.archived);
+      
+      if (activeDreams.length === 0) {
+        list.innerHTML = '';
+        document.getElementById('emptyState').classList.remove('hidden');
+        return;
+      }
+      
+      document.getElementById('emptyState').classList.add('hidden');
+      
+      list.innerHTML = activeDreams.map(dream => `
+        <div class="dream-entry">
+          <div class="dream-header">
+            <div>
+              <div class="dream-title">${dream.title}</div>
+              <div class="dream-date">${new Date(dream.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</div>
+            </div>
           </div>
-          <div class="entry-text">${escapeHtml(entry.text)}</div>
-          ${entry.image ? `<img src="${entry.image}" class="entry-image" alt="Dream sketch" />` : ''}
-        </div>
-      `).join('')}
-    </div>
-  `;
-}
-
-// ========================================
-// STATISTICS
-// ========================================
-function renderStats(){
-  const allEntries = Object.values(state.nights).flatMap(n => n.entries);
-  const nightsWithDreams = Object.values(state.nights).filter(n => n.entries.length > 0).length;
-  
-  $('statTotal').textContent = allEntries.length;
-  $('statNights').textContent = nightsWithDreams;
-  $('statAvg').textContent = nightsWithDreams ? (allEntries.length / nightsWithDreams).toFixed(1) : '0';
-  
-  // Calculate streak
-  const dates = Object.values(state.nights)
-    .filter(n => n.entries.length > 0)
-    .map(n => new Date(n.date))
-    .sort((a, b) => b - a);
-  
-  let streak = 0;
-  if(dates.length > 0){
-    let current = new Date();
-    current.setHours(0, 0, 0, 0);
-    for(let date of dates){
-      date.setHours(0, 0, 0, 0);
-      const diff = (current - date) / (1000 * 60 * 60 * 24);
-      if(diff <= streak + 1){
-        streak++;
-      } else {
-        break;
-      }
-      current = date;
-    }
-  }
-  $('statStreak').textContent = streak;
-  
-  // Mood chart
-  const moodCounts = {};
-  allEntries.forEach(e => {
-    if(e.mood){
-      const mood = e.mood.split(' ')[1] || e.mood;
-      moodCounts[mood] = (moodCounts[mood] || 0) + 1;
-    }
-  });
-  
-  const moodChart = $('moodChart');
-  if(Object.keys(moodCounts).length > 0){
-    moodChart.innerHTML = Object.entries(moodCounts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 8)
-      .map(([mood, count]) => `
-        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px">
-          <span>${mood}</span>
-          <span style="color:var(--accent); font-weight:600">${count}</span>
+          <div class="dream-content">${dream.content}</div>
+          ${dream.tags.length > 0 ? `
+            <div class="dream-tags">
+              ${dream.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+          ` : ''}
+          <div class="dream-actions">
+            <button class="btn btn-sm btn-secondary" onclick="archiveDream('${dream.id}')">📦 Archive</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteDream('${dream.id}')">🗑️ Delete</button>
+          </div>
         </div>
       `).join('');
-  } else {
-    moodChart.innerHTML = '<p class="muted">No mood data yet</p>';
-  }
-  
-  // Tags chart
-  const tagCounts = {};
-  allEntries.forEach(e => {
-    if(e.tags) e.tags.forEach(tag => {
-      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-    });
-  });
-  
-  const tagsChart = $('tagsChart');
-  if(Object.keys(tagCounts).length > 0){
-    tagsChart.innerHTML = Object.entries(tagCounts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10)
-      .map(([tag, count]) => `
-        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px">
-          <span>${escapeHtml(tag)}</span>
-          <span style="color:var(--accent); font-weight:600">${count}</span>
+    }
+
+    // Archive dream
+    function archiveDream(id) {
+      const dream = dreams.find(d => d.id === id);
+      if (dream) {
+        dream.archived = true;
+        saveData();
+        renderDreams();
+      }
+    }
+
+    // Delete dream
+    function deleteDream(id) {
+      if (confirm('Delete this dream?')) {
+        dreams = dreams.filter(d => d.id !== id);
+        saveData();
+        renderDreams();
+      }
+    }
+
+    // Render stats
+    function renderStats() {
+      const activeDreams = dreams.filter(d => !d.archived);
+      const allTags = activeDreams.flatMap(d => d.tags);
+      const tagCount = {};
+      allTags.forEach(tag => tagCount[tag] = (tagCount[tag] || 0) + 1);
+      
+      document.getElementById('statsContent').innerHTML = `
+        <div class="mb-3">
+          <h3 class="text-center" style="font-size: 2rem; color: var(--accent);">${activeDreams.length}</h3>
+          <p class="text-center text-muted">Total Dreams</p>
+        </div>
+        <div class="mb-2">
+          <strong>Most Common Tags:</strong>
+        </div>
+        <div class="dream-tags">
+          ${Object.entries(tagCount).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([tag, count]) => 
+            `<span class="tag">${tag} (${count})</span>`
+          ).join('')}
+        </div>
+      `;
+    }
+
+    // Render archive
+    function renderArchive() {
+      const archived = dreams.filter(d => d.archived);
+      const list = document.getElementById('archiveList');
+      
+      if (archived.length === 0) {
+        list.innerHTML = '<div class="empty-state"><div class="empty-icon">📦</div><p class="empty-text">No archived dreams</p></div>';
+        return;
+      }
+      
+      list.innerHTML = archived.map(dream => `
+        <div class="dream-entry">
+          <div class="dream-title">${dream.title}</div>
+          <div class="dream-date">${new Date(dream.date).toLocaleDateString()}</div>
+          <button class="btn btn-sm btn-primary mt-1" onclick="restoreDream('${dream.id}')">↩️ Restore</button>
         </div>
       `).join('');
-  } else {
-    tagsChart.innerHTML = '<p class="muted">No tags yet</p>';
-  }
-  
-  // Time chart (last 7 days)
-  const barChart = $('barChart');
-  const last7Days = [];
-  for(let i = 6; i >= 0; i--){
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-    last7Days.push(dateKey(date));
-  }
-  
-  const dayCounts = last7Days.map(key => {
-    const night = Object.values(state.nights).find(n => n.date === key);
-    return night ? night.entries.length : 0;
-  });
-  
-  const maxCount = Math.max(...dayCounts, 1);
-  barChart.innerHTML = dayCounts.map((count, i) => `
-    <div class="bar" style="height:${(count / maxCount) * 100}%">
-      <div class="bar-label">${last7Days[i].split('-')[2]}</div>
-    </div>
-  `).join('');
-  
-  // Pattern analysis
-  const patternDiv = $('patternAnalysis');
-  if(allEntries.length >= 10){
-    const patterns = analyzePatterns(allEntries);
-    patternDiv.innerHTML = `
-      <div style="font-size:14px; line-height:1.8">
-        ${patterns.map(p => `<p>• ${p}</p>`).join('')}
-      </div>
-    `;
-  } else {
-    patternDiv.innerHTML = '<p class="muted">Record at least 10 dreams to see pattern analysis</p>';
-  }
-}
-
-function analyzePatterns(entries){
-  const patterns = [];
-  
-  // Recurring themes
-  const tagFreq = {};
-  entries.forEach(e => {
-    if(e.tags) e.tags.forEach(tag => {
-      tagFreq[tag] = (tagFreq[tag] || 0) + 1;
-    });
-  });
-  
-  const commonTags = Object.entries(tagFreq)
-    .filter(([_, count]) => count >= 3)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(([tag]) => tag);
-  
-  if(commonTags.length > 0){
-    patterns.push(`You frequently dream about: ${commonTags.join(', ')}`);
-  }
-  
-  // Mood patterns
-  const moodFreq = {};
-  entries.forEach(e => {
-    if(e.mood){
-      const mood = e.mood.split(' ')[1] || e.mood;
-      moodFreq[mood] = (moodFreq[mood] || 0) + 1;
     }
-  });
-  
-  const dominantMood = Object.entries(moodFreq).sort((a, b) => b[1] - a[1])[0];
-  if(dominantMood){
-    patterns.push(`Most common emotional tone: ${dominantMood[0]} (${dominantMood[1]} dreams)`);
-  }
-  
-  // Dream frequency
-  const avgPerNight = entries.length / Object.keys(state.nights).length;
-  if(avgPerNight > 2){
-    patterns.push('You recall multiple dreams per night - strong dream recall!');
-  } else if(avgPerNight < 1){
-    patterns.push('You typically recall one dream per night - consider keeping a glass of water nearby to enhance recall');
-  }
-  
-  return patterns.length > 0 ? patterns : ['Keep recording to discover patterns!'];
-}
 
-// ========================================
-// ARCHIVE
-// ========================================
-function renderArchive(){
-  const searchTerm = $('archiveSearchInput').value.toLowerCase();
-  
-  const filtered = searchTerm
-    ? state.archive.filter(e =>
-        e.title.toLowerCase().includes(searchTerm) ||
-        e.text.toLowerCase().includes(searchTerm) ||
-        (e.tags && e.tags.some(t => t.toLowerCase().includes(searchTerm)))
-      )
-    : state.archive;
-  
-  // Sort by archived date (newest first)
-  const sorted = [...filtered].sort((a, b) => 
-    new Date(b.archivedAt) - new Date(a.archivedAt)
-  );
-  
-  // Update stats
-  $('archiveCount').textContent = state.archive.length;
-  
-  if(state.archive.length > 0){
-    const dates = state.archive.map(e => new Date(e.timestamp)).sort((a, b) => a - b);
-    $('archiveOldest').textContent = dates[0].toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-    $('archiveNewest').textContent = dates[dates.length - 1].toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-  } else {
-    $('archiveOldest').textContent = '—';
-    $('archiveNewest').textContent = '—';
-  }
-  
-  // Render list
-  const list = $('archiveList');
-  
-  if(sorted.length === 0){
-    list.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">📦</div>
-        <h3>${state.archive.length === 0 ? 'No archived dreams yet' : 'No matches found'}</h3>
-        <p>${state.archive.length === 0 ? 'Archive dreams to preserve them forever' : 'Try a different search term'}</p>
-      </div>
-    `;
-    return;
-  }
-  
-  list.innerHTML = sorted.map(entry => `
-    <div class="entry" data-id="${entry.id}">
-      <div class="entry-top">
-        <div class="grow">
-          <div class="entry-title">${escapeHtml(entry.title)}</div>
-          <div class="entry-meta">
-            <span>🕐 ${formatDate(entry.timestamp)}</span>
-            <span>📦 Archived: ${formatDate(entry.archivedAt)}</span>
-            ${entry.mood ? `<span>${entry.mood}</span>` : ''}
-          </div>
-        </div>
-      </div>
-      ${entry.tags && entry.tags.length > 0 ? `
-        <div class="entry-tags">
-          ${entry.tags.map(tag => `<span class="tag">${renderTagWithIcon(tag)}</span>`).join('')}
-        </div>
-      ` : ''}
-      <div class="entry-text">${escapeHtml(entry.text)}</div>
-      ${entry.image ? `<img src="${entry.image}" class="entry-image" alt="Dream sketch" />` : ''}
-      <div class="entry-actions">
-        <button class="mini-btn" onclick="restoreEntry('${entry.id}')">↩️ Restore</button>
-        <button class="mini-btn" onclick="deleteArchivedEntry('${entry.id}')">🗑️ Delete</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-async function exportArchive(){
-  if(state.archive.length === 0){
-    toast('⚠️ No archived dreams to export');
-    return;
-  }
-  
-  const payload = {
-    exportedAt: nowISO(),
-    version: '2.0-archive',
-    totalDreams: state.archive.length,
-    archive: state.archive
-  };
-  
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  downloadFile(blob, `dream-archive-export-${nowISO().split('T')[0]}.json`);
-  toast('📦 Archive exported');
-}
-
-// ========================================
-// SYMBOLS
-// ========================================
-function renderSymbols(){
-  const list = $('symbolList');
-  list.innerHTML = SYMBOLS.map(sym => `
-    <div class="symbol-card">
-      <div class="symbol-icon">${sym.icon}</div>
-      <div class="symbol-name">${sym.name}</div>
-      <div class="symbol-meaning">${sym.meaning}</div>
-    </div>
-  `).join('');
-}
-
-// ========================================
-// LUCID DREAMING
-// ========================================
-function renderLucidDreaming(){
-  const allEntries = Object.values(state.nights).flatMap(n => n.entries);
-  const allTags = allEntries.flatMap(e => e.tags || []);
-  
-  const tagFreq = {};
-  allTags.forEach(tag => {
-    tagFreq[tag] = (tagFreq[tag] || 0) + 1;
-  });
-  
-  const dreamSigns = Object.entries(tagFreq)
-    .filter(([_, count]) => count >= 3)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 10);
-  
-  const signsList = $('dreamSignsList');
-  if(dreamSigns.length > 0){
-    signsList.innerHTML = `
-      <p class="muted" style="margin-bottom:12px">These elements appear frequently in your dreams. Use them as reality check triggers!</p>
-      ${dreamSigns.map(([tag, count]) => `
-        <div class="reality-check">
-          🔸 ${escapeHtml(tag)} <span style="color:var(--muted)">(${count} times)</span>
-        </div>
-      `).join('')}
-    `;
-  } else {
-    signsList.innerHTML = '<p class="muted">Record more dreams to identify your dream signs</p>';
-  }
-}
-
-// ========================================
-// EXPORT/IMPORT
-// ========================================
-async function exportJSON(){
-  const payload = {
-    exportedAt: nowISO(),
-    version: '2.0',
-    settings: { ...state.settings, apiKey: state.settings.apiKey ? '***REDACTED***' : '' },
-    prefs: state.prefs,
-    nights: state.nights,
-    activeNightId: state.activeNightId,
-    chat: state.chat,
-    archive: state.archive
-  };
-  
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  downloadFile(blob, 'dream-journal-export.json');
-  toast('📦 Exported as JSON (includes archive)');
-}
-
-async function exportMarkdown(){
-  const nights = Object.values(state.nights)
-    .filter(n => n.entries.length > 0)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-  
-  let md = '# Dream Journal Export\n\n';
-  md += `Exported: ${formatDate(nowISO())}\n\n`;
-  md += `Total Dreams: ${nights.reduce((sum, n) => sum + n.entries.length, 0)}\n\n`;
-  md += '---\n\n';
-  
-  nights.forEach(night => {
-    md += `## ${night.date}\n\n`;
-    night.entries.forEach((entry, i) => {
-      md += `### Dream ${i + 1}: ${entry.title}\n\n`;
-      if(entry.mood) md += `**Mood:** ${entry.mood}\n\n`;
-      if(entry.tags && entry.tags.length) md += `**Tags:** ${entry.tags.join(', ')}\n\n`;
-      md += `${entry.text}\n\n`;
-      md += '---\n\n';
-    });
-  });
-  
-  const blob = new Blob([md], { type: 'text/markdown' });
-  downloadFile(blob, 'dream-journal-export.md');
-  toast('📝 Exported as Markdown');
-}
-
-function downloadFile(blob, filename){
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 500);
-}
-
-async function importFile(){
-  const file = $('importFile').files[0];
-  if(!file) return;
-  
-  const reader = new FileReader();
-  reader.onload = async () => {
-    try{
-      const data = JSON.parse(reader.result);
-      
-      if(data.nights) state.nights = data.nights;
-      if(data.activeNightId && state.nights[data.activeNightId]) state.activeNightId = data.activeNightId;
-      if(Array.isArray(data.chat)) state.chat = data.chat;
-      if(data.prefs) state.prefs = { ...state.prefs, ...data.prefs };
-      if(Array.isArray(data.archive)) state.archive = data.archive;
-      
-      // Rebuild tag set
-      state.tags.clear();
-      Object.values(state.nights).forEach(night => {
-        night.entries.forEach(entry => {
-          if(entry.tags) entry.tags.forEach(tag => state.tags.add(tag));
-        });
-      });
-      
-      // Add tags from archive
-      state.archive.forEach(entry => {
-        if(entry.tags) entry.tags.forEach(tag => state.tags.add(tag));
-      });
-      
-      await saveAll();
-      renderEntries();
-      renderChat();
-      toast('✅ Data imported successfully (including archive)');
-    }catch(e){
-      toast('❌ Import failed - invalid file');
-    }
-  };
-  reader.readAsText(file);
-}
-
-async function wipeAll(){
-  if(!confirmDelete('⚠️ DELETE ALL DATA? This cannot be undone!')) return;
-  if(!confirmDelete('Are you absolutely sure? All dreams, chat history, and settings will be lost.')) return;
-  
-  // Clear storage
-  if(state.persistence === 'idb'){
-    await storeDel(KEYS.settings);
-    await storeDel(KEYS.nights);
-    await storeDel(KEYS.activeNightId);
-    await storeDel(KEYS.chat);
-    await storeDel(KEYS.prefs);
-    await storeDel(KEYS.archive);
-  } else if(state.persistence === 'ls'){
-    lsDel(KEYS.settings);
-    lsDel(KEYS.nights);
-    lsDel(KEYS.activeNightId);
-    lsDel(KEYS.chat);
-    lsDel(KEYS.prefs);
-    lsDel(KEYS.archive);
-  }
-  
-  // Reset state
-  state.settings = { apiKey:'', apiBase:'https://api.openai.com/v1/chat/completions', model:'gpt-4o-mini' };
-  state.prefs = { voiceLang:'en-US', autoSave:true, markdownSupport:false };
-  state.nights = {};
-  state.chat = [];
-  state.activeNightId = null;
-  state.tags.clear();
-  state.archive = [];
-  
-  await createNewNight(false);
-  await saveAll();
-  
-  // Reset UI
-  renderEntries();
-  renderChat();
-  $('apiKey').value = '';
-  $('apiBase').value = state.settings.apiBase;
-  $('model').value = state.settings.model;
-  $('voiceLang').value = state.prefs.voiceLang;
-  $('autoSave').checked = state.prefs.autoSave;
-  $('markdownSupport').checked = state.prefs.markdownSupport;
-  updateApiPill();
-  
-  toast('🗑️ All data wiped');
-}
-
-// ========================================
-// SHARE FUNCTIONALITY
-// ========================================
-async function shareEntry(entryId){
-  const night = getActiveNight();
-  const entry = night.entries.find(e => e.id === entryId);
-  if(!entry) return;
-  
-  const shareContent = $('shareContent');
-  shareContent.innerHTML = `
-    <h3>${escapeHtml(entry.title)}</h3>
-    <p class="muted">${formatDate(entry.timestamp)}</p>
-    ${entry.mood ? `<p><strong>Mood:</strong> ${entry.mood}</p>` : ''}
-    ${entry.tags && entry.tags.length ? `<p><strong>Tags:</strong> ${entry.tags.join(', ')}</p>` : ''}
-    <div style="white-space:pre-wrap; margin-top:16px">${escapeHtml(entry.text)}</div>
-    ${entry.image ? `<img src="${entry.image}" style="width:100%; border-radius:12px; margin-top:16px" />` : ''}
-  `;
-  
-  $('shareModal').classList.add('active');
-}
-
-// ========================================
-// AUTO-SAVE
-// ========================================
-function scheduleAutoSave(){
-  if(state.autoSaveTimer) clearTimeout(state.autoSaveTimer);
-  state.autoSaveTimer = setTimeout(async () => {
-    // This could save a draft to localStorage
-    // For now, just update char count
-    updateCharCount();
-  }, 1000);
-}
-
-function updateCharCount(){
-  const text = $('dreamText').value;
-  $('charCount').textContent = text.length;
-  if(text.length > 4500){
-    $('charCount').style.color = 'var(--warn)';
-  } else if(text.length >= 5000){
-    $('charCount').style.color = 'var(--bad)';
-  } else {
-    $('charCount').style.color = 'var(--muted)';
-  }
-}
-
-// ========================================
-// THEME
-// ========================================
-function toggleTheme(){
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  const newTheme = current === 'light' ? '' : 'light';
-  html.setAttribute('data-theme', newTheme);
-  localStorage.setItem('dj_theme', newTheme);
-  toast(newTheme === 'light' ? '☀️ Light mode' : '🌙 Dark mode');
-}
-
-// ========================================
-// TABS
-// ========================================
-function switchTab(tabName){
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  
-  const tab = document.querySelector(`[data-tab="${tabName}"]`);
-  const content = $(`tab-${tabName}`);
-  
-  if(tab && content){
-    tab.classList.add('active');
-    content.classList.add('active');
-    
-    // Render specific tab content
-    if(tabName === 'calendar') renderCalendar();
-    if(tabName === 'stats') renderStats();
-    if(tabName === 'archive') renderArchive();
-    if(tabName === 'symbols') renderSymbols();
-    if(tabName === 'lucid') renderLucidDreaming();
-  }
-}
-
-// ========================================
-// INITIALIZATION
-// ========================================
-async function init(){
-  // Load theme
-  const savedTheme = localStorage.getItem('dj_theme');
-  if(savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-  
-  // Detect storage
-  await detectPersistence();
-  await loadAll();
-  
-  // Set up UI
-  $('apiKey').value = state.settings.apiKey || '';
-  $('apiBase').value = state.settings.apiBase;
-  $('model').value = state.settings.model;
-  $('voiceLang').value = state.prefs.voiceLang;
-  $('autoSave').checked = state.prefs.autoSave;
-  $('markdownSupport').checked = state.prefs.markdownSupport;
-  
-  updateApiPill();
-  renderEntries();
-  renderChat();
-  setupSpeech();
-  setupTagInput('tagContainer', 'tagInput');
-  setupTagInput('editTagContainer', 'editTagInput');
-  
-  // Tab switching
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
-  });
-  
-  // Journal actions
-  $('addBtn').addEventListener('click', addEntry);
-  $('newNightBtn').addEventListener('click', () => createNewNight(true));
-  $('interpretSelectedBtn').addEventListener('click', () => interpret('selected'));
-  $('interpretAllBtn').addEventListener('click', () => interpret('all'));
-  $('clearChatBtn').addEventListener('click', clearChat);
-  $('micBtn').addEventListener('click', toggleVoice);
-  
-  // Auto-detect symbols/tags
-  $('autoDetectBtn').addEventListener('click', () => {
-    const text = $('dreamText').value;
-    if(!text.trim()){
-      toast('⚠️ Write your dream first');
-      return;
-    }
-    autoPopulateTags(text, 'tagContainer');
-  });
-  
-  // Auto-detect on blur (when user finishes typing and clicks away)
-  let autoDetectTimer = null;
-  $('dreamText').addEventListener('input', () => {
-    // Clear existing timer
-    if(autoDetectTimer) clearTimeout(autoDetectTimer);
-    
-    // Auto-detect after 2 seconds of no typing
-    autoDetectTimer = setTimeout(() => {
-      const text = $('dreamText').value;
-      if(text.trim().length > 50){ // Only auto-detect if there's substantial text
-        autoPopulateTags(text, 'tagContainer');
+    // Restore dream
+    function restoreDream(id) {
+      const dream = dreams.find(d => d.id === id);
+      if (dream) {
+        dream.archived = false;
+        saveData();
+        renderArchive();
       }
-    }, 2000);
-  });
-  
-  // Chat
-  $('sendChatBtn').addEventListener('click', sendChat);
-  $('chatInput').addEventListener('keydown', (e) => {
-    if(e.key === 'Enter') sendChat();
-  });
-  
-  // Search
-  $('searchInput').addEventListener('input', renderEntries);
-  
-  // Archive
-  $('archiveSearchInput').addEventListener('input', renderArchive);
-  $('exportArchiveBtn').addEventListener('click', exportArchive);
-  
-  // Settings
-  $('saveSettingsBtn').addEventListener('click', async () => {
-    state.settings.apiKey = $('apiKey').value.trim();
-    state.settings.apiBase = $('apiBase').value.trim();
-    state.settings.model = $('model').value;
-    await saveAll();
-    updateApiPill();
-    toast('✅ Settings saved');
-  });
-  
-  $('testConnectionBtn').addEventListener('click', async () => {
-    const testBtn = $('testConnectionBtn');
-    const testDiv = $('connectionTest');
-    const resultDiv = $('testResult');
-    
-    testDiv.style.display = 'block';
-    testBtn.disabled = true;
-    testBtn.classList.add('loading');
-    
-    resultDiv.innerHTML = `
-      <p style="color:var(--muted); font-size:13px">🔄 Testing connection...</p>
-    `;
-    
-    try {
-      // Test with a simple message
-      const testMessages = [
-        { role: 'user', content: 'Reply with just "OK" if you can read this.' }
-      ];
-      
-      const startTime = Date.now();
-      const response = await callOpenAI(testMessages);
-      const duration = Date.now() - startTime;
-      
-      resultDiv.innerHTML = `
-        <p style="color:var(--good); font-size:14px; margin-bottom:8px">✅ <strong>Connection Successful!</strong></p>
-        <p style="color:var(--muted); font-size:12px">
-          • Response time: ${duration}ms<br>
-          • Model: ${state.settings.model}<br>
-          • Endpoint: ${state.settings.apiBase}<br>
-          • Response: "${response.substring(0, 50)}..."
-        </p>
-      `;
-      toast('✅ API connection works!');
-    } catch(err) {
-      resultDiv.innerHTML = `
-        <p style="color:var(--bad); font-size:14px; margin-bottom:8px">❌ <strong>Connection Failed</strong></p>
-        <p style="color:var(--text); font-size:12px; white-space:pre-wrap; line-height:1.6">${escapeHtml(err.message)}</p>
-      `;
-      toast('❌ Connection test failed');
-    } finally {
-      testBtn.disabled = false;
-      testBtn.classList.remove('loading');
     }
-  });
-  
-  $('savePrefsBtn').addEventListener('click', async () => {
-    state.prefs.voiceLang = $('voiceLang').value;
-    state.prefs.autoSave = $('autoSave').checked;
-    state.prefs.markdownSupport = $('markdownSupport').checked;
-    if(state.recognition) state.recognition.lang = state.prefs.voiceLang;
-    await saveAll();
-    toast('✅ Preferences saved');
-  });
-  
-  // Export/Import
-  $('exportJSONBtn').addEventListener('click', exportJSON);
-  $('exportMarkdownBtn').addEventListener('click', exportMarkdown);
-  $('importBtn').addEventListener('click', () => $('importFile').click());
-  $('importFile').addEventListener('change', importFile);
-  $('wipeAllBtn').addEventListener('click', wipeAll);
-  
-  // Calendar
-  $('prevMonth').addEventListener('click', () => {
-    state.calendarDate.setMonth(state.calendarDate.getMonth() - 1);
-    renderCalendar();
-  });
-  $('nextMonth').addEventListener('click', () => {
-    state.calendarDate.setMonth(state.calendarDate.getMonth() + 1);
-    renderCalendar();
-  });
-  
-  // Theme
-  $('themeToggle').addEventListener('click', toggleTheme);
-  
-  // Modals
-  document.querySelectorAll('.close-modal').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.closest('.modal').classList.remove('active');
-    });
-  });
-  
-  $('saveEditBtn').addEventListener('click', saveEdit);
-  
-  // Keyboard shortcuts
-  $('dreamText').addEventListener('keydown', (e) => {
-    if((e.ctrlKey || e.metaKey) && e.key === 'Enter'){
-      e.preventDefault();
-      addEntry();
-    }
-  });
-  
-  $('dreamText').addEventListener('input', () => {
-    updateCharCount();
-    if(state.prefs.autoSave) scheduleAutoSave();
-  });
-  
-  // Lucid dreaming
-  $('realityCheckReminder').addEventListener('click', () => {
-    if('Notification' in window){
-      Notification.requestPermission().then(permission => {
-        if(permission === 'granted'){
-          toast('✅ Reality check reminders enabled');
-          // Set interval for reminders
-          setInterval(() => {
-            new Notification('🌙 Reality Check', {
-              body: 'Am I dreaming right now? Check your hands!',
-              icon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iIzBiMGYxNCIvPjx0ZXh0IHg9IjYwIiB5PSI3MCIgZm9udC1zaXplPSI2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+MmTwvdGV4dD48L3N2Zz4='
-            });
-          }, 2 * 60 * 60 * 1000); // Every 2 hours
-        } else {
-          toast('⚠️ Notification permission denied');
-        }
-      });
-    } else {
-      toast('⚠️ Notifications not supported');
-    }
-  });
-  
-  $('analyzeDreamSigns').addEventListener('click', () => {
-    switchTab('stats');
-    toast('💡 Check the Pattern Analysis section');
-  });
-  
-  // Initial char count
-  updateCharCount();
-}
 
-// Start the app
-init();
-</script>
+    // Save settings
+    function saveSettings() {
+      apiKey = document.getElementById('apiKeyInput').value.trim();
+      saveData();
+      alert('Settings saved!');
+      switchView('journal');
+    }
+
+    // Init on load
+    init();
+  </script>
 </body>
 </html>
