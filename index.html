@@ -1905,11 +1905,6 @@ function toggleEntrySelection(entryId){
   renderEntries();
 }
 
-function toggleEntry(event, entryId){
-  const entryEl = event.currentTarget;
-  entryEl.classList.toggle('collapsed');
-}
-
 async function openEditModal(entryId){
   const night = getActiveNight();
   const entry = night.entries.find(e => e.id === entryId);
@@ -1990,7 +1985,7 @@ function renderEntries(){
   }
   
   list.innerHTML = filtered.map(entry => `
-    <div class="entry collapsed" data-id="${entry.id}" onclick="toggleEntry(event, '${entry.id}')">
+    <div class="entry collapsed" data-id="${entry.id}">
       <div class="entry-top">
         <input type="checkbox" ${entry.selected ? 'checked' : ''} 
           onchange="toggleEntrySelection('${entry.id}')" onclick="event.stopPropagation()" />
@@ -2009,7 +2004,7 @@ function renderEntries(){
       ` : ''}
       <div class="entry-text">${escapeHtml(entry.text)}</div>
       ${entry.image ? `<img src="${entry.image}" class="entry-image" alt="Dream sketch" />` : ''}
-      <div class="entry-actions" onclick="event.stopPropagation()">
+      <div class="entry-actions">
         <button class="mini-btn" onclick="openEditModal('${entry.id}')">✏️ Edit</button>
         <button class="mini-btn" onclick="archiveEntry('${entry.id}')">📦 Archive</button>
         <button class="mini-btn" onclick="deleteEntry('${entry.id}')">🗑️ Delete</button>
@@ -2017,6 +2012,20 @@ function renderEntries(){
       </div>
     </div>
   `).join('');
+  
+  // Add click handlers to entries after rendering
+  list.querySelectorAll('.entry').forEach(entryEl => {
+    entryEl.addEventListener('click', (e) => {
+      // Don't toggle if clicking on checkbox, button, or link
+      if(e.target.tagName === 'INPUT' || 
+         e.target.tagName === 'BUTTON' || 
+         e.target.closest('.entry-actions') ||
+         e.target.closest('input[type="checkbox"]')){
+        return;
+      }
+      entryEl.classList.toggle('collapsed');
+    });
+  });
 }
 
 function escapeHtml(text){
