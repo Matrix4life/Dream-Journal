@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- DREAM JOURNAL v1.5 - NO COLLAPSE - ALL VISIBLE - BUILD 20250212v5 -->
+<!-- DREAM JOURNAL v1.6 - FIXED COMPRESSION - BUILD 20250212v6 -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -355,11 +355,12 @@
       display:flex; 
       flex-direction:column; 
       gap:16px;
-      max-height:500px;
+      max-height:650px;
       overflow-y:auto;
       overflow-x:hidden;
-      padding-right:4px;
+      padding-right:8px;
       margin-top:16px;
+      scroll-behavior:smooth;
     }
     
     .entries-list::-webkit-scrollbar{
@@ -388,6 +389,8 @@
       transition:all 0.2s ease;
       position:relative;
       overflow:hidden;
+      flex-shrink:0;
+      min-height:fit-content;
     }
     
     
