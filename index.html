@@ -353,41 +353,37 @@
     .entries-list{
       display:flex; 
       flex-direction:column; 
-      gap:12px;
-      max-height:600px;
+      gap:16px;
+      max-height:500px;
       overflow-y:auto;
       overflow-x:hidden;
-      padding-right:8px;
-      position:relative;
-    }
-    
-    .entries-list::after{
-      content:'';
-      position:sticky;
-      bottom:0;
-      left:0;
-      right:0;
-      height:40px;
-      background:linear-gradient(to top, var(--card), transparent);
-      pointer-events:none;
-      opacity:0;
-      transition:opacity 0.3s ease;
+      padding-right:4px;
+      margin-top:16px;
     }
     
     .entries-list::-webkit-scrollbar{
-      width:8px;
+      width:6px;
+    }
+    
+    .entries-list::-webkit-scrollbar-track{
+      background:rgba(0,0,0,.2);
+      border-radius:3px;
     }
     
     .entries-list::-webkit-scrollbar-thumb{
-      background:var(--accent);
-      border-radius:4px;
+      background:rgba(110,231,255,.4);
+      border-radius:3px;
+    }
+    
+    .entries-list::-webkit-scrollbar-thumb:hover{
+      background:rgba(110,231,255,.6);
     }
     
     .entry{
       border:1px solid var(--border);
       background:rgba(0,0,0,.25);
       border-radius:16px;
-      padding:16px;
+      padding:20px;
       transition:all 0.2s ease;
       position:relative;
       overflow:hidden;
@@ -1134,7 +1130,7 @@
           Check dreams to interpret. "Interpret All" treats them as one connected night.
         </p>
 
-        <div id="entriesList" class="entries-list" style="margin-top:16px"></div>
+        <div id="entriesList" class="entries-list"></div>
       </div>
     </div>
 
