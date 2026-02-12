@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- DREAM JOURNAL v1.5 - NO COLLAPSE - ALL VISIBLE - BUILD 20250212v5 -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -387,32 +388,6 @@
       transition:all 0.2s ease;
       position:relative;
       overflow:hidden;
-      cursor:pointer;
-    }
-    
-    .entry.collapsed .entry-text,
-    .entry.collapsed .entry-tags,
-    .entry.collapsed .entry-actions,
-    .entry.collapsed .entry-image{
-      display:none;
-    }
-    
-    .entry.collapsed{
-      padding:16px 20px;
-    }
-    
-    .entry.collapsed .entry-title::after{
-      content:' ▼';
-      font-size:10px;
-      opacity:0.5;
-      margin-left:8px;
-    }
-    
-    .entry:not(.collapsed) .entry-title::after{
-      content:' ▲';
-      font-size:10px;
-      opacity:0.5;
-      margin-left:8px;
     }
     
     
@@ -1985,10 +1960,10 @@ function renderEntries(){
   }
   
   list.innerHTML = filtered.map(entry => `
-    <div class="entry collapsed" data-id="${entry.id}">
+    <div class="entry" data-id="${entry.id}">
       <div class="entry-top">
         <input type="checkbox" ${entry.selected ? 'checked' : ''} 
-          onchange="toggleEntrySelection('${entry.id}')" onclick="event.stopPropagation()" />
+          onchange="toggleEntrySelection('${entry.id}')" />
         <div class="grow">
           <div class="entry-title">${escapeHtml(entry.title)}</div>
           <div class="entry-meta">
@@ -2012,20 +1987,6 @@ function renderEntries(){
       </div>
     </div>
   `).join('');
-  
-  // Add click handlers to entries after rendering
-  list.querySelectorAll('.entry').forEach(entryEl => {
-    entryEl.addEventListener('click', (e) => {
-      // Don't toggle if clicking on checkbox, button, or link
-      if(e.target.tagName === 'INPUT' || 
-         e.target.tagName === 'BUTTON' || 
-         e.target.closest('.entry-actions') ||
-         e.target.closest('input[type="checkbox"]')){
-        return;
-      }
-      entryEl.classList.toggle('collapsed');
-    });
-  });
 }
 
 function escapeHtml(text){
