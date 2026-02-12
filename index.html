@@ -1012,6 +1012,7 @@
     <button class="tab active" data-tab="journal">📔 Journal</button>
     <button class="tab" data-tab="calendar">📅 Calendar</button>
     <button class="tab" data-tab="stats">📊 Statistics</button>
+    <button class="tab" data-tab="archive">📦 Archive</button>
     <button class="tab" data-tab="symbols">🔮 Symbol Dictionary</button>
     <button class="tab" data-tab="lucid">🌙 Lucid Dreaming</button>
     <button class="tab" data-tab="settings">⚙️ Settings</button>
@@ -1190,6 +1191,39 @@
       <div id="patternAnalysis">
         <p class="muted">Pattern analysis will appear here once you have 10+ dreams recorded.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- ============ ARCHIVE TAB ============ -->
+  <div id="tab-archive" class="tab-content">
+    <div class="card">
+      <h2>📦 Dream Archive</h2>
+      <p class="muted">Archived dreams are preserved forever and never lost. They won't appear in stats or searches, but can be restored anytime.</p>
+      
+      <div class="row" style="margin:16px 0">
+        <div class="search-box grow">
+          <span class="search-icon">🔍</span>
+          <input id="archiveSearchInput" type="text" placeholder="Search archived dreams…" />
+        </div>
+        <button id="exportArchiveBtn" class="btn">📥 Export Archive</button>
+      </div>
+
+      <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card">
+          <div class="stat-value" id="archiveCount">0</div>
+          <div class="stat-label">Archived Dreams</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="archiveOldest">—</div>
+          <div class="stat-label">Oldest Dream</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="archiveNewest">—</div>
+          <div class="stat-label">Newest Dream</div>
+        </div>
+      </div>
+
+      <div id="archiveList" class="entries-list"></div>
     </div>
   </div>
 
@@ -1428,7 +1462,8 @@ const KEYS = {
   nights: 'dj_nights_v2',
   activeNightId: 'dj_active_night_v2',
   chat: 'dj_chat_v2',
-  prefs: 'dj_prefs_v2'
+  prefs: 'dj_prefs_v2',
+  archive: 'dj_archive_v2'
 };
 
 const state = {
@@ -1443,7 +1478,8 @@ const state = {
   currentEditId: null,
   autoSaveTimer: null,
   calendarDate: new Date(),
-  tags: new Set()
+  tags: new Set(),
+  archive: [] // Archived dreams
 };
 
 // Common dream symbols
@@ -1561,6 +1597,7 @@ async function saveAll(){
   await saveData(KEYS.nights, state.nights);
   await saveData(KEYS.activeNightId, state.activeNightId);
   await saveData(KEYS.chat, state.chat);
+  await saveData(KEYS.archive, state.archive);
 }
 
 async function loadAll(){
@@ -1585,6 +1622,9 @@ async function loadAll(){
   const chat = await loadData(KEYS.chat);
   if(Array.isArray(chat)) state.chat = chat;
   
+  const archive = await loadData(KEYS.archive);
+  if(Array.isArray(archive)) state.archive = archive;
+  
   if(!state.activeNightId || !state.nights[state.activeNightId]){
     await createNewNight(false);
   }
@@ -1594,6 +1634,11 @@ async function loadAll(){
     night.entries.forEach(entry => {
       if(entry.tags) entry.tags.forEach(tag => state.tags.add(tag));
     });
+  });
+  
+  // Extract tags from archive too
+  state.archive.forEach(entry => {
+    if(entry.tags) entry.tags.forEach(tag => state.tags.add(tag));
   });
 }
 
@@ -1728,6 +1773,77 @@ async function deleteEntry(entryId){
   toast('🗑️ Entry deleted');
 }
 
+async function archiveEntry(entryId){
+  if(!confirm('Archive this dream? It will be preserved forever but removed from active dreams.')) return;
+  
+  const night = getActiveNight();
+  const entry = night.entries.find(e => e.id === entryId);
+  if(!entry) return;
+  
+  // Add to archive with metadata
+  const archivedEntry = {
+    ...entry,
+    archivedAt: nowISO(),
+    originalNightId: state.activeNightId,
+    originalNightDate: night.date
+  };
+  
+  state.archive.push(archivedEntry);
+  
+  // Remove from active night
+  night.entries = night.entries.filter(e => e.id !== entryId);
+  
+  await saveAll();
+  renderEntries();
+  toast('📦 Dream archived');
+}
+
+async function restoreEntry(entryId){
+  if(!confirm('Restore this dream to active dreams?')) return;
+  
+  const archivedIndex = state.archive.findIndex(e => e.id === entryId);
+  if(archivedIndex === -1) return;
+  
+  const entry = state.archive[archivedIndex];
+  
+  // Find or create the original night
+  let night = state.nights[entry.originalNightId];
+  if(!night){
+    // If original night doesn't exist, add to current night
+    night = getActiveNight();
+  }
+  
+  // Remove archive metadata
+  const restoredEntry = {
+    id: entry.id,
+    title: entry.title,
+    text: entry.text,
+    mood: entry.mood,
+    tags: entry.tags,
+    timestamp: entry.timestamp,
+    selected: true,
+    image: entry.image
+  };
+  
+  night.entries.push(restoredEntry);
+  
+  // Remove from archive
+  state.archive.splice(archivedIndex, 1);
+  
+  await saveAll();
+  renderArchive();
+  toast('✅ Dream restored');
+}
+
+async function deleteArchivedEntry(entryId){
+  if(!confirmDelete('Permanently delete this archived dream? This cannot be undone!')) return;
+  
+  state.archive = state.archive.filter(e => e.id !== entryId);
+  await saveAll();
+  renderArchive();
+  toast('🗑️ Archived dream deleted');
+}
+
 function toggleEntrySelection(entryId){
   const night = getActiveNight();
   const entry = night.entries.find(e => e.id === entryId);
@@ -1836,6 +1952,7 @@ function renderEntries(){
       ${entry.image ? `<img src="${entry.image}" class="entry-image" alt="Dream sketch" />` : ''}
       <div class="entry-actions">
         <button class="mini-btn" onclick="openEditModal('${entry.id}')">✏️ Edit</button>
+        <button class="mini-btn" onclick="archiveEntry('${entry.id}')">📦 Archive</button>
         <button class="mini-btn" onclick="deleteEntry('${entry.id}')">🗑️ Delete</button>
         <button class="mini-btn" onclick="shareEntry('${entry.id}')">🔗 Share</button>
       </div>
@@ -1929,30 +2046,35 @@ async function interpret(mode){
     return;
   }
   
-  const systemPrompt = `You are a warm, insightful friend who happens to know a lot about dreams and psychology. Think of yourself as someone the dreamer trusts - part thoughtful companion, part curious explorer of the mind.
+  const systemPrompt = `You are a warm, insightful friend having a natural conversation about dreams. DO NOT use any formatting whatsoever.
 
-Your conversational style:
-- Speak naturally, like you're having coffee together
-- Start with genuine curiosity about what stood out to you
-- Share observations as if you're thinking out loud: "What strikes me is..." or "I'm noticing..."
-- Ask questions that invite deeper reflection
-- Acknowledge the emotional reality of the dream
-- Weave in psychological insights naturally, without lecturing
-- Sometimes express uncertainty or multiple possibilities
-- Use short paragraphs and natural pauses
+CRITICAL RULES - NEVER BREAK THESE:
+- NO bold text (**like this**), NO italics, NO headers of any kind
+- NO sections or structured responses  
+- NO phrases like "The Symbolism of X:" or "Personal Reflection:" or "What This Means:"
+- NO bullet points or numbered lists
+- NO markdown formatting at all
+- DO NOT ask multiple questions in a row - pick ONE thing to wonder about
+- Write in pure, flowing paragraphs like you're texting or talking
 
-What to avoid:
-- Numbered lists or bullet points (way too clinical!)
-- Phrases like "Let's explore" or "It's important to note" (too formal)
-- Definitive interpretations like "This means..." (dreams are personal)
-- Overly enthusiastic language with lots of exclamation marks
-- Textbook explanations
-- Sounding like an AI assistant
+BANNED PHRASES (never use these):
+- "The symbolism of..."
+- "This could represent..."
+- "Personal reflection:"
+- "What stood out to me is..."
+- "I'm really interested in hearing..."
+- Any phrase that sounds like a section header
 
-Example of the right tone:
-"That feeling of being chased through endless corridors... there's something visceral about it. The way you described not being able to scream - that sense of powerlessness really comes through. I'm wondering if there's something in your waking life where you feel like you're running but not getting anywhere? The fact that you recognized your pursuer at the end but can't remember who it was now - that's curious. Sometimes our mind protects us from insights we're not quite ready for."
+Your voice:
+You're thoughtful and know about psychology, but you talk like a real person, not a textbook. You notice one specific thing and follow that thread. You wonder aloud. You might ask a question but don't interrogate. Sometimes you just share an observation and let it sit.
 
-Keep responses 2-4 natural paragraphs. Be genuinely curious about their inner world.`;
+Example of WRONG (too structured, uses headers and formatting):
+"**The Symbolism of Flying:** Flying often represents freedom. **The City Below:** Cities represent responsibilities. **Personal Reflection:** What might this mean for you?"
+
+Example of RIGHT (natural, conversational, no structure):
+"Flying over a city... there's something about being up there above everything, you know? I'm wondering if the city felt familiar or more like somewhere you'd never been. Sometimes when we dream of flying it's about wanting distance from something, and sometimes it's more about seeing things from a new angle."
+
+Keep responses 2-3 short paragraphs max. Just talk naturally.`;
   
   const dreamContent = entries.map((e, i) => 
     `Dream ${i+1} - "${e.title}"${e.mood ? ` (Mood: ${e.mood})` : ''}${e.tags && e.tags.length ? ` [Tags: ${e.tags.join(', ')}]` : ''}:
@@ -2000,7 +2122,8 @@ async function callOpenAI(messages){
     messages: typeof messages === 'string' 
       ? [{ role: 'user', content: messages }]
       : messages,
-    max_tokens: 1000
+    max_tokens: 1000,
+    temperature: 0.8
   };
   
   try {
@@ -2097,7 +2220,7 @@ async function sendChat(){
   sendBtn.classList.add('loading');
   
   try{
-    const systemPrompt = `You're continuing a conversation about dreams with someone you care about. Stay warm, curious, and conversational. Build naturally on what's already been discussed - reference earlier points, follow threads of meaning, ask follow-up questions that show you're really listening. Avoid lists, formal language, or sounding like a textbook. Just talk like a thoughtful friend who knows about psychology and dreams.`;
+    const systemPrompt = `Continue talking naturally about their dreams. NO formatting - no bold, no headers, no sections, no bullet points. Just write in plain paragraphs like you're texting a friend. Build on what's already been said. Ask follow-up questions. Wonder out loud. Keep it conversational and flowing.`;
     const messages = [
       { role: 'system', content: systemPrompt },
       ...state.chat.map(msg => ({ role: msg.role, content: msg.content }))
@@ -2442,6 +2565,96 @@ function analyzePatterns(entries){
 }
 
 // ========================================
+// ARCHIVE
+// ========================================
+function renderArchive(){
+  const searchTerm = $('archiveSearchInput').value.toLowerCase();
+  
+  const filtered = searchTerm
+    ? state.archive.filter(e =>
+        e.title.toLowerCase().includes(searchTerm) ||
+        e.text.toLowerCase().includes(searchTerm) ||
+        (e.tags && e.tags.some(t => t.toLowerCase().includes(searchTerm)))
+      )
+    : state.archive;
+  
+  // Sort by archived date (newest first)
+  const sorted = [...filtered].sort((a, b) => 
+    new Date(b.archivedAt) - new Date(a.archivedAt)
+  );
+  
+  // Update stats
+  $('archiveCount').textContent = state.archive.length;
+  
+  if(state.archive.length > 0){
+    const dates = state.archive.map(e => new Date(e.timestamp)).sort((a, b) => a - b);
+    $('archiveOldest').textContent = dates[0].toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    $('archiveNewest').textContent = dates[dates.length - 1].toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  } else {
+    $('archiveOldest').textContent = '—';
+    $('archiveNewest').textContent = '—';
+  }
+  
+  // Render list
+  const list = $('archiveList');
+  
+  if(sorted.length === 0){
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">📦</div>
+        <h3>${state.archive.length === 0 ? 'No archived dreams yet' : 'No matches found'}</h3>
+        <p>${state.archive.length === 0 ? 'Archive dreams to preserve them forever' : 'Try a different search term'}</p>
+      </div>
+    `;
+    return;
+  }
+  
+  list.innerHTML = sorted.map(entry => `
+    <div class="entry" data-id="${entry.id}">
+      <div class="entry-top">
+        <div class="grow">
+          <div class="entry-title">${escapeHtml(entry.title)}</div>
+          <div class="entry-meta">
+            <span>🕐 ${formatDate(entry.timestamp)}</span>
+            <span>📦 Archived: ${formatDate(entry.archivedAt)}</span>
+            ${entry.mood ? `<span>${entry.mood}</span>` : ''}
+          </div>
+        </div>
+      </div>
+      ${entry.tags && entry.tags.length > 0 ? `
+        <div class="entry-tags">
+          ${entry.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+        </div>
+      ` : ''}
+      <div class="entry-text">${escapeHtml(entry.text)}</div>
+      ${entry.image ? `<img src="${entry.image}" class="entry-image" alt="Dream sketch" />` : ''}
+      <div class="entry-actions">
+        <button class="mini-btn" onclick="restoreEntry('${entry.id}')">↩️ Restore</button>
+        <button class="mini-btn" onclick="deleteArchivedEntry('${entry.id}')">🗑️ Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function exportArchive(){
+  if(state.archive.length === 0){
+    toast('⚠️ No archived dreams to export');
+    return;
+  }
+  
+  const payload = {
+    exportedAt: nowISO(),
+    version: '2.0-archive',
+    totalDreams: state.archive.length,
+    archive: state.archive
+  };
+  
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  downloadFile(blob, `dream-archive-export-${nowISO().split('T')[0]}.json`);
+  toast('📦 Archive exported');
+}
+
+// ========================================
 // SYMBOLS
 // ========================================
 function renderSymbols(){
@@ -2498,12 +2711,13 @@ async function exportJSON(){
     prefs: state.prefs,
     nights: state.nights,
     activeNightId: state.activeNightId,
-    chat: state.chat
+    chat: state.chat,
+    archive: state.archive
   };
   
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   downloadFile(blob, 'dream-journal-export.json');
-  toast('📦 Exported as JSON');
+  toast('📦 Exported as JSON (includes archive)');
 }
 
 async function exportMarkdown(){
@@ -2553,6 +2767,7 @@ async function importFile(){
       if(data.activeNightId && state.nights[data.activeNightId]) state.activeNightId = data.activeNightId;
       if(Array.isArray(data.chat)) state.chat = data.chat;
       if(data.prefs) state.prefs = { ...state.prefs, ...data.prefs };
+      if(Array.isArray(data.archive)) state.archive = data.archive;
       
       // Rebuild tag set
       state.tags.clear();
@@ -2562,10 +2777,15 @@ async function importFile(){
         });
       });
       
+      // Add tags from archive
+      state.archive.forEach(entry => {
+        if(entry.tags) entry.tags.forEach(tag => state.tags.add(tag));
+      });
+      
       await saveAll();
       renderEntries();
       renderChat();
-      toast('✅ Data imported successfully');
+      toast('✅ Data imported successfully (including archive)');
     }catch(e){
       toast('❌ Import failed - invalid file');
     }
@@ -2584,12 +2804,14 @@ async function wipeAll(){
     await storeDel(KEYS.activeNightId);
     await storeDel(KEYS.chat);
     await storeDel(KEYS.prefs);
+    await storeDel(KEYS.archive);
   } else if(state.persistence === 'ls'){
     lsDel(KEYS.settings);
     lsDel(KEYS.nights);
     lsDel(KEYS.activeNightId);
     lsDel(KEYS.chat);
     lsDel(KEYS.prefs);
+    lsDel(KEYS.archive);
   }
   
   // Reset state
@@ -2599,6 +2821,7 @@ async function wipeAll(){
   state.chat = [];
   state.activeNightId = null;
   state.tags.clear();
+  state.archive = [];
   
   await createNewNight(false);
   await saveAll();
@@ -2691,6 +2914,7 @@ function switchTab(tabName){
     // Render specific tab content
     if(tabName === 'calendar') renderCalendar();
     if(tabName === 'stats') renderStats();
+    if(tabName === 'archive') renderArchive();
     if(tabName === 'symbols') renderSymbols();
     if(tabName === 'lucid') renderLucidDreaming();
   }
@@ -2744,6 +2968,10 @@ async function init(){
   
   // Search
   $('searchInput').addEventListener('input', renderEntries);
+  
+  // Archive
+  $('archiveSearchInput').addEventListener('input', renderArchive);
+  $('exportArchiveBtn').addEventListener('click', exportArchive);
   
   // Settings
   $('saveSettingsBtn').addEventListener('click', async () => {
